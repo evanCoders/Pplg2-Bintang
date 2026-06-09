@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XII PPLG - Class Profile</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./asset/img/logo-rpl-removebg-preview.png">
+    <meta name="theme-color" content="#0A1931">
+    <meta property="og:title" content="XII PPLG - Class Profile">
+    <meta property="og:description" content="Kelas XII PPLG - profil kelas dan galeri kegiatan.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,9 +25,7 @@
                         soft: '#B3CFE5',
                         background: '#F6FAFD',
                     },
-                    maxWidth: {
-                        '8xl': '1400px',
-                    }
+                    maxWidth: { '8xl': '1400px' }
                 }
             }
         }
@@ -33,101 +37,15 @@
     <!-- AOS Animation -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
-    <style>
-        /* Custom Styles */
-        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #F6FAFD; }
-        ::-webkit-scrollbar-thumb { background: #4A7FA7; border-radius: 4px; }
-        .dark ::-webkit-scrollbar-track { background: #0A1931; }
-        .dark ::-webkit-scrollbar-thumb { background: #B3CFE5; }
-
-        /* Loader */
-        #loader {
-            position: fixed; inset: 0; z-index: 9999; background: #F6FAFD;
-            display: flex; align-items: center; justify-content: center; transition: opacity 0.5s;
-        }
-        .dark #loader { background: #0A1931; }
-        .spinner { width: 40px; height: 40px; border: 4px solid #B3CFE5; border-top-color: #4A7FA7; border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* Glassmorphism Navbar */
-        .nav-glass { background: rgba(246, 250, 253, 0.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-        .nav-scrolled { background: rgba(246, 250, 253, 0.9); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); }
-        .dark .nav-scrolled { background: rgba(10, 25, 49, 0.9); }
-
-            /* Struktur Organisasi Flowchart Lines */
-    .org-level { position: relative; }
-    
-    /* Garis Vertikal ke bawah dari Ketua & Wakil */
-    .org-top::after {
-        content: ''; position: absolute; bottom: -16px; left: 50%; width: 2px; height: 16px;
-        background-color: #4A7FA7; transform: translateX(-50%);
-    }
-    
-    /* Garis Horizontal penghubung Sie-sie */
-    .org-mid::before {
-        content: ''; position: absolute; top: -16px; left: 5%; right: 5%; height: 2px;
-        background-color: #4A7FA7;
-    }
-    
-    /* Garis Vertikal ke atas dari masing-masing Sie */
-    .org-item::before {
-        content: ''; position: absolute; top: -16px; left: 50%; width: 2px; height: 16px;
-        background-color: #4A7FA7; transform: translateX(-50%);
-    }
-    
-    /* Dark Mode Lines */
-    .dark .org-top::after, .dark .org-mid::before, .dark .org-item::before {
-        background-color: #B3CFE5;
-    }
-
-        /* Animated Gradient Blob */
-        .blob {
-            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; z-index: -1;
-            animation: float 8s infinite ease-in-out;
-        }
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-
-        /* Masonry Layout */
-        .masonry {
-            column-count: 5; column-gap: 16px;
-        }
-        @media (max-width: 1280px) { .masonry { column-count: 4; } }
-        @media (max-width: 1024px) { .masonry { column-count: 3; } }
-        @media (max-width: 640px) { .masonry { column-count: 2; } }
-        @media (max-width: 400px) { .masonry { column-count: 1; } }
-        
-        .masonry-item {
-            break-inside: avoid; margin-bottom: 16px; position: relative; overflow: hidden; border-radius: 12px;
-            cursor: pointer; transition: transform 0.3s;
-        }
-        .masonry-item:hover { transform: scale(1.02); }
-        .masonry-item img { width: 100%; display: block; transition: transform 0.5s; }
-        .masonry-item:hover img { transform: scale(1.1); }
-        .masonry-overlay {
-            position: absolute; inset: 0; background: rgba(10, 25, 49, 0.5); 
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s;
-        }
-        .masonry-item:hover .masonry-overlay { opacity: 1; }
-
-        /* Fade animations for filters */
-        .fade-in { animation: fadeIn 0.5s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Typing cursor */
-        .typing-cursor { border-right: 2px solid #4A7FA7; animation: blink 1s step-end infinite; }
-        @keyframes blink { 50% { border-color: transparent; } }
-    </style>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="./asset/css/style.css">
 </head>
 <body class="bg-background dark:bg-primary text-primary dark:text-background transition-colors duration-500">
+
+    <!-- Premium Background Elements -->
+    <div class="premium-bg"></div>
+    <div class="premium-grid"></div>
+    <div class="premium-glowline"></div>
 
     <!-- Loader -->
     <div id="loader">
@@ -138,28 +56,27 @@
     <nav id="navbar" class="fixed w-full z-50 nav-glass transition-all duration-300">
         <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <a href="#" class="text-xl font-bold text-accent"><i class="fas fa-code mr-2"></i>XII PPLG</a>
+                <a href="#" class="text-xl font-bold text-accent flex items-center gap-2">
+                    <img src="./asset/img/logosmk.webp" alt="Logo Sekolah" class="w-5 h-5">
+                    <img src="./asset/img/logo-rpl-removebg-preview.png" alt="Logo RPL" class="w-5 h-5">
+                    XII PPLG
+                </a>
                 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-4">
                     <a href="#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-accent transition" data-i18n="nav_home">Home</a>
                     <a href="#about" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-accent transition" data-i18n="nav_about">About</a>
                     <a href="#structure" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-accent transition" data-i18n="nav_structure">Structure</a>
-                    <a href="#students" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-accent transition" data-i18n="nav_students">Students</a>
+                    <a href="#members" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-accent transition" data-i18n="nav_students">Students</a>
                     <a href="#portfolio" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-accent transition" data-i18n="nav_portfolio">Portfolio</a>
                     <a href="#contact" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-accent transition" data-i18n="nav_contact">Contact</a>
                 </div>
 
-                <!-- Actions -->
                 <div class="flex items-center space-x-3">
-                    <!-- Language Toggle -->
-                    <button id="lang-toggle" class="px-2 py-1 border border-accent rounded text-xs font-bold text-accent hover:bg-accent hover:text-white transition">EN</button>
-                    <!-- Dark Mode Toggle -->
+                    <button id="lang-toggle" class="lang-btn px-2 py-1 border border-accent rounded text-xs font-bold text-accent hover:bg-accent hover:text-white transition">EN</button>
                     <button id="dark-toggle" class="text-accent hover:text-secondary dark:hover:text-soft transition text-lg">
                         <i class="fas fa-moon dark:hidden"></i>
                         <i class="fas fa-sun hidden dark:inline"></i>
                     </button>
-                    <!-- Hamburger -->
                     <button id="hamburger" class="md:hidden text-accent text-xl">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -167,12 +84,11 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-secondary pb-4 px-4">
             <a href="#home" class="block py-2 px-4 text-sm hover:bg-soft dark:hover:bg-primary rounded" data-i18n="nav_home">Home</a>
             <a href="#about" class="block py-2 px-4 text-sm hover:bg-soft dark:hover:bg-primary rounded" data-i18n="nav_about">About</a>
             <a href="#structure" class="block py-2 px-4 text-sm hover:bg-soft dark:hover:bg-primary rounded" data-i18n="nav_structure">Structure</a>
-            <a href="#students" class="block py-2 px-4 text-sm hover:bg-soft dark:hover:bg-primary rounded" data-i18n="nav_students">Students</a>
+            <a href="#members" class="block py-2 px-4 text-sm hover:bg-soft dark:hover:bg-primary rounded" data-i18n="nav_students">Students</a>
             <a href="#portfolio" class="block py-2 px-4 text-sm hover:bg-soft dark:hover:bg-primary rounded" data-i18n="nav_portfolio">Portfolio</a>
             <a href="#contact" class="block py-2 px-4 text-sm hover:bg-soft dark:hover:bg-primary rounded" data-i18n="nav_contact">Contact</a>
         </div>
@@ -240,68 +156,46 @@
         </div>
     </section>
 
-<!-- Structure Section -->
-<section id="structure" class="py-20 overflow-hidden">
-    <div class="max-w-8xl mx-auto px-4">
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-3xl font-bold text-accent" data-i18n="struct_title">Class Structure</h2>
-        </div>
-        
-        <!-- Container Utama Struktur -->
-        <div class="flex flex-col items-center space-y-12">
-            
-            <!-- Tingkat 1: Pimpinan (Ketua & Wakil) -->
-            <div class="flex justify-center space-x-6 md:space-x-10" id="struct-top"></div>
-
-            <!-- Tingkat 2: Inti (Sekretaris & Bendahara) -->
-            <div class="flex justify-center flex-wrap gap-4 md:gap-6 org-level org-mid pt-4" id="struct-mid"></div>
-
-            <!-- Tingkat 3: Sie-Sie (Keamanan, Kebersihan, dll) -->
-            <div class="flex justify-center flex-wrap gap-4 md:gap-6 org-level org-mid pt-4" id="struct-bottom"></div>
-            
-        </div>
-    </div>
-</section>
-
-    <!-- Students / Members Section -->
-<section id="members" class="py-28 md:py-32 px-6 transition-colors duration-500">
-    <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-14">
-            <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-4 reveal-on-scroll" data-i18n="members_label">Anggota Kelas</p>
-            <h2 class="text-3xl md:text-4xl font-serif font-bold tracking-tight text-primary dark:text-background reveal-on-scroll"
-                style="transition-delay:0.1s" data-i18n="members_title">Seluruh Siswa XII PPLG</h2>
-            <p class="text-soft dark:text-gray-400 font-normal mt-4 text-sm max-w-md mx-auto reveal-on-scroll"
-                data-i18n="members_desc">31 siswa yang bersatu membangun masa depan digital.</p>
-        </div>
-
-        <!-- Search & Filter Controls -->
-        <div class="flex flex-col md:flex-row justify-center items-center mb-10 gap-4 reveal-on-scroll" style="transition-delay:0.2s">
-            <div class="relative w-full md:w-1/3">
-                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-soft"></i>
-                <input type="text" id="member-search" 
-                    class="w-full pl-11 pr-4 py-3 rounded-xl border border-soft/30 focus:outline-none focus:border-accent bg-white dark:bg-primary text-primary dark:text-background transition-colors"
-                    data-i18n-placeholder="members_search" placeholder="Cari nama siswa...">
+    <!-- Structure Section -->
+    <section id="structure" class="py-20 overflow-hidden bg-slate-50 dark:bg-transparent">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-accent" data-i18n="struct_title">Struktur Kelas</h2>
             </div>
-            <select id="member-filter" 
-                class="w-full md:w-1/4 px-4 py-3 rounded-xl border border-soft/30 focus:outline-none focus:border-accent bg-white dark:bg-primary text-primary dark:text-background transition-colors">
-                <option value="all" data-i18n="members_filter_all">Semua Absen</option>
-            </select>
+            <div class="org-chart flex flex-col items-center space-y-0" id="org-container"></div>
         </div>
+    </section>
 
-        <!-- Pure Photo Grid (Tanpa Card/Section Background) -->
-        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 md:gap-3" id="membersVisible"></div>
-        <div class="hidden grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 md:gap-3 mt-2 md:mt-3" id="membersHidden"></div>
+    <!-- Students Section -->
+    <section id="members" class="py-28 md:py-32 px-6 transition-colors duration-500">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-14">
+                <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-4 reveal-on-scroll" data-i18n="members_label">Anggota Kelas</p>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold tracking-tight text-primary dark:text-background reveal-on-scroll" style="transition-delay:0.1s" data-i18n="members_title">Seluruh Siswa XII PPLG</h2>
+                <p class="text-soft dark:text-gray-400 font-normal mt-4 text-sm max-w-md mx-auto reveal-on-scroll" data-i18n="members_desc">31 siswa yang bersatu membangun masa depan digital.</p>
+            </div>
 
-        <!-- Toggle Button -->
-        <div class="text-center mt-10 reveal-on-scroll">
-            <button class="px-8 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-white rounded-full font-semibold transition-all duration-300 transform hover:scale-105 dark:border-soft dark:text-soft dark:hover:bg-soft dark:hover:text-primary"
-                    id="membersToggle" data-open="false" onclick="toggleMembers()"
-                    data-i18n="btn_show_all">Tampilkan Semua</button>
+            <div class="flex flex-col md:flex-row justify-center items-center mb-10 gap-4 reveal-on-scroll" style="transition-delay:0.2s">
+                <div class="relative w-full md:w-1/3">
+                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-soft"></i>
+                    <input type="text" id="member-search" class="w-full pl-11 pr-4 py-3 rounded-xl border border-soft/30 focus:outline-none focus:border-accent bg-white dark:bg-primary text-primary dark:text-background transition-colors" data-i18n-placeholder="members_search" placeholder="Cari nama siswa...">
+                </div>
+                <select id="member-filter" class="w-full md:w-1/4 px-4 py-3 rounded-xl border border-soft/30 focus:outline-none focus:border-accent bg-white dark:bg-primary text-primary dark:text-background transition-colors">
+                    <option value="all" data-i18n="members_filter_all">Semua Absen</option>
+                </select>
+            </div>
+
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 md:gap-3" id="membersVisible"></div>
+            <div class="hidden grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 md:gap-3 mt-2 md:mt-3" id="membersHidden"></div>
+
+            <!-- Tombol Toggle Show All -->
+            <div class="text-center mt-10 reveal-on-scroll">
+                <button class="px-8 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-white rounded-full font-semibold transition-all duration-300 transform hover:scale-105 dark:border-soft dark:text-soft dark:hover:bg-soft dark:hover:text-primary" id="membersToggle" data-open="false" data-i18n="btn_show_all">Tampilkan Semua</button>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-    <!-- Portfolio / Gallery Section -->
+    <!-- Gallery Section -->
     <section id="portfolio" class="py-20">
         <div class="max-w-8xl mx-auto px-4">
             <div class="text-center mb-8" data-aos="fade-up">
@@ -315,9 +209,7 @@
                 <button class="gal-filter px-4 py-2 rounded-full bg-soft text-primary text-sm hover:bg-accent hover:text-white transition" data-filter="lomba">Lomba</button>
                 <button class="gal-filter px-4 py-2 rounded-full bg-soft text-primary text-sm hover:bg-accent hover:text-white transition" data-filter="upacara">Upacara</button>
             </div>
-            <div id="masonry-container" class="masonry">
-                <!-- JS Generated -->
-            </div>
+            <div id="masonry-container" class="masonry"></div>
         </div>
     </section>
 
@@ -327,9 +219,7 @@
             <div class="text-center mb-12" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-accent" data-i18n="proj_title">Our Projects</h2>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="project-grid">
-                <!-- JS Generated -->
-            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="project-grid"></div>
         </div>
     </section>
 
@@ -339,9 +229,7 @@
             <div class="text-center mb-12" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-accent">FAQ</h2>
             </div>
-            <div class="space-y-4" id="faq-container">
-                <!-- JS Generated -->
-            </div>
+            <div class="space-y-4" id="faq-container"></div>
         </div>
     </section>
 
@@ -373,7 +261,11 @@
     <footer class="py-12 bg-primary dark:bg-black text-soft">
         <div class="max-w-8xl mx-auto px-4 grid md:grid-cols-3 gap-8">
             <div>
-                <h3 class="text-2xl font-bold text-white mb-4"><i class="fas fa-code mr-2"></i>XII PPLG</h3>
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="./asset/img/logosmk.webp" alt="Logo Sekolah" class="w-6 h-6">
+                    <img src="./asset/img/logo-rpl-removebg-preview.png" alt="Logo RPL" class="w-6 h-6">
+                    <h3 class="text-2xl font-bold text-white">XII PPLG</h3>
+                </div>
                 <p data-i18n="footer_desc">Kelas unggulan yang berfokus pada pengembangan perangkat lunak dan gim di SMK.</p>
             </div>
             <div>
@@ -437,581 +329,7 @@
     </div>
 
     <!-- Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-    // =============================================
-    // 1. DATA COLLECTION
-    // =============================================
-    const pinData = [
-        { id: 1, img: "./asset/img/galery/ala_ala.jpg", title: "Ala Ala Kegiatan", category: "kegiatan", user: "tim_pplg", likes: 42 },
-        { id: 2, img: "./asset/img/galery/apalah.jpg", title: "Momen Santai", category: "siswa", user: "kelas_xi", likes: 38 },
-        { id: 3, img: "./asset/img/galery/artis.jpeg", title: "Artis Kelas", category: "siswa", user: "pplg_fun", likes: 56 },
-        { id: 4, img: "./asset/img/galery/bakar.jpg", title: "Bakaran Bersama", category: "kegiatan", user: "tim_bbq", likes: 71 },
-        { id: 5, img: "./asset/img/galery/bapak_bapak.jpg", title: "Kunjungan Guru", category: "guru", user: "guru_besar", likes: 29 },
-        { id: 6, img: "./asset/img/galery/baris.JPG", title: "Baris Berbaris", category: "upacara", user: "pbb_team", likes: 33 },
-        { id: 7, img: "./asset/img/galery/bataktoba.jpeg", title: "Batak Toba Pride", category: "siswa", user: "batak_vibes", likes: 48 },
-        { id: 8, img: "./asset/img/galery/bataktoba2.jpeg", title: "Batak Toba 2", category: "siswa", user: "batak_vibes", likes: 44 },
-        { id: 9, img: "./asset/img/galery/belajar.jpg", title: "Sesi Belajar", category: "kegiatan", user: "study_group", likes: 65 },
-        { id: 10, img: "./asset/img/galery/bersih_bersih.jpg", title: "Bersih Bersih Kelas", category: "kegiatan", user: "clean_team", likes: 22 },
-        { id: 11, img: "./asset/img/galery/briping.JPG", title: "Briefing Tim", category: "kegiatan", user: "project_lead", likes: 37 },
-        { id: 12, img: "./asset/img/galery/ee.jpeg", title: "Foto Ee", category: "siswa", user: "ee_photos", likes: 19 },
-        { id: 13, img: "./asset/img/galery/gaya.jpg", title: "Gaya Keren", category: "siswa", user: "fashion_pplg", likes: 83 },
-        { id: 14, img: "./asset/img/galery/gaya2.jpg", title: "Gaya Keren 2", category: "siswa", user: "fashion_pplg", likes: 77 },
-        { id: 15, img: "./asset/img/galery/gaya4.jpeg", title: "Gaya 4", category: "siswa", user: "style_team", likes: 51 },
-        { id: 16, img: "./asset/img/galery/hari_guru_day2.JPG", title: "Hari Guru Day 2", category: "guru", user: "guru_day", likes: 62 },
-        { id: 17, img: "./asset/img/galery/hari_guru.jpg", title: "Hari Guru", category: "guru", user: "guru_day", likes: 58 },
-        { id: 18, img: "./asset/img/galery/hari_guru5.jpg", title: "Hari Guru 5", category: "guru", user: "guru_day", likes: 45 },
-        { id: 19, img: "./asset/img/galery/hitam.jpeg", title: "Foto Hitam", category: "siswa", user: "dark_mode", likes: 34 },
-        { id: 20, img: "./asset/img/galery/hitam2.jpeg", title: "Foto Hitam 2", category: "siswa", user: "dark_mode", likes: 31 },
-        { id: 21, img: "./asset/img/galery/hukum.JPG", title: "Pelajaran Hukum", category: "kegiatan", user: "civic_team", likes: 27 },
-        { id: 22, img: "./asset/img/galery/ini.jpeg", title: "Batak toba era", category: "kegiatan", user: "random_fun", likes: 15 },
-        { id: 23, img: "./asset/img/galery/jalan2.jpg", title: "Jalan Jalan", category: "kegiatan", user: "outing_team", likes: 69 },
-        { id: 24, img: "./asset/img/galery/lapor1.jpg", title: "Laporan 1", category: "kegiatan", user: "report_team", likes: 24 },
-        { id: 25, img: "./asset/img/galery/lapor2.jpg", title: "Laporan 2", category: "kegiatan", user: "report_team", likes: 21 },
-        { id: 26, img: "./asset/img/galery/lapor3.jpg", title: "Laporan 3", category: "kegiatan", user: "report_team", likes: 18 },
-        { id: 27, img: "./asset/img/galery/lapor4.jpg", title: "Laporan 4", category: "kegiatan", user: "report_team", likes: 20 },
-        { id: 28, img: "./asset/img/galery/lomba.JPG", title: "Lomba Seru", category: "lomba", user: "competition", likes: 88 },
-        { id: 29, img: "./asset/img/galery/lomba2.JPG", title: "Lomba 2", category: "lomba", user: "competition", likes: 74 },
-        { id: 30, img: "./asset/img/galery/nangis.jpeg", title: "Momen Emosional", category: "siswa", user: "emotional", likes: 92 },
-        { id: 31, img: "./asset/img/galery/olga.jpg", title: "Olga Moment", category: "siswa", user: "olga_photos", likes: 55 },
-        { id: 32, img: "./asset/img/galery/olga2.jpg", title: "Olga 2", category: "siswa", user: "olga_photos", likes: 49 },
-        { id: 33, img: "./asset/img/galery/parit1.JPG", title: "Parit Bersih", category: "kegiatan", user: "clean_team", likes: 16 },
-        { id: 34, img: "./asset/img/galery/pbb.JPG", title: "Latihan PBB", category: "upacara", user: "pbb_team", likes: 40 },
-        { id: 35, img: "./asset/img/galery/piala.JPG", title: "Trofi Juara", category: "lomba", user: "winner_team", likes: 96 },
-        { id: 36, img: "./asset/img/galery/piala1.JPG", title: "Piala 1", category: "lomba", user: "winner_team", likes: 89 },
-        { id: 37, img: "./asset/img/galery/piala2.JPG", title: "Piala 2", category: "lomba", user: "winner_team", likes: 81 },
-        { id: 38, img: "./asset/img/galery/piala3.JPG", title: "Piala 3", category: "lomba", user: "winner_team", likes: 73 },
-        { id: 39, img: "./asset/img/galery/piala4.JPG", title: "Piala 4", category: "lomba", user: "winner_team", likes: 67 },
-        { id: 40, img: "./asset/img/galery/pp.jpg", title: "PP Kegiatan", category: "kegiatan", user: "pp_team", likes: 35 },
-        { id: 41, img: "./asset/img/galery/pramuka.jpeg", title: "Pramuka Adventure", category: "kegiatan", user: "scout_team", likes: 63 },
-        { id: 42, img: "./asset/img/galery/renang.jpg", title: "Lomba Renang", category: "lomba", user: "swim_team", likes: 78 },
-        { id: 43, img: "./asset/img/galery/variasi.JPG", title: "Variasi Kreatif", category: "kegiatan", user: "creative_team", likes: 52 },
-        { id: 44, img: "./asset/img/galery/yesus.jpg", title: "Momen Rohani", category: "kegiatan", user: "spiritual", likes: 46 }
-    ];
-
-    const classStructure = [
-        { name: "DEWI ROBIATUL ADAWIYAH", img: "./asset/img/murid/DEWI_ROBIATUL_ADAWIYAH.webp", role: "Wali kelas", color: "rose", number: "01" },
-        { name: "RAKA SYAPUTRA PRATAMA", img: "./asset/img/murid/RAKA_SYAPUTRA_PRATAMA.webp", role: "Sekertaris", color: "rose", number: "02" },
-        { name: "ALDI SAEFUL NIZAR", img: "./asset/img/murid/ALDI_SAEFUL_NIZAR.webp", role: "Sekertaris", color: "rose", number: "03" },
-        { name: "KAILA AZAHRA", img: "./asset/img/murid/KAILA_AZAHRA.webp", role: "Sekertaris", color: "rose", number: "04" },
-        { name: "NAZWA AULIA RULYIANTI", img: "./asset/img/murid/NAZWA_AULIA_RULYIANTI.webp", role: "Sekertaris", color: "rose", number: "05" },
-        { name: "SINTIA SALSABILA", img: "./asset/img/murid/SINTIA_SALSABILA.webp", role: "Bendahara", color: "rose", number: "06" },
-        { name: "RIPA ADITIA RAMADANI", img: "./asset/img/murid/RIPA_ADITIA_RAMADANI.webp", role: "Keamanan", color: "sky", number: "07" },
-        { name: "AGUNG RAHMANUDIN", img: "./asset/img/murid/AGUNG_RAHMANUDIN.webp", role: "Keamanan", color: "sky", number: "08" },
-        { name: "FIKRI", img: "./asset/img/murid/FIKRI.webp", role: "Kebersihan", color: "teal", number: "09" },
-        { name: "NINDY TRIYANTI SOMANTRI", img: "./asset/img/murid/NINDY_TRIYANTI_SOMANTRI.webp", role: "Kebersihan", color: "teal", number: "10" },
-        { name: "NOVITA RIZKI", img: "./asset/img/murid/NOVITA_RIZKI.webp", role: "Kerohanian", color: "orange", number: "11" },
-        { name: "META DWI ALFIANA", img: "./asset/img/murid/META_DWI_ALFIANA.webp", role: "Kerohanian", color: "orange", number: "12" },
-        { name: "ADE RAMDANI", img: "./asset/img/murid/ADE_RAMDANI.webp", role: "Kesenian", color: "violet", number: "13" },
-        { name: "PANI PELISA", img: "./asset/img/murid/PANI_PELISA.webp", role: "Kesenian", color: "violet", number: "14" },
-        { name: "YOGA ADITYA ERLANGGA", img: "./asset/img/murid/YOGA_ADITYA_ERLANGGA.webp", role: "Olahraga", color: "emerald", number: "15" },
-        { name: "FATIH RIZIQ ALFARIZI", img: "./asset/img/murid/FATIH_RIZIQ_ALFARIZI.webp", role: "Olahraga", color: "emerald", number: "16" },
-    ];
-    const studentsAll = [
-        { name: "ABDUL KARIM", img: "./asset/img/murid/ABDUL_KARIM.webp", number: "01" },
-        { name: "ADE RAMDANI", img: "./asset/img/murid/ADE_RAMDANI.webp", number: "02" },
-        { name: "ADIF ENDRIAN", img: "./asset/img/murid/ADIF_ENDRIAN.webp", number: "03" },
-        { name: "AGUNG RAHMANUDIN", img: "./asset/img/murid/AGUNG_RAHMANUDIN.webp", number: "04" },
-        { name: "ALDI SAEFUL NIZAR", img: "./asset/img/murid/ALDI_SAEFUL_NIZAR.webp", number: "05" },
-        { name: "ANI YULIANI", img: "./asset/img/murid/ANI_YULIANI.webp", number: "06" },
-        { name: "ARIE WIRAWAN", img: "./asset/img/murid/ARIE_WIRAWAN.webp", number: "07" },
-        { name: "DUDU BADRUJAMAN", img: "./asset/img/murid/DUDU_BADRUJAMAN.webp", number: "08" },
-        { name: "EVAN PURNAMALILA KOSASIH", img: "./asset/img/murid/EVAN_PURNAMALILA_KOSASIH.webp", number: "09" },
-        { name: "FATIH RIZIQ ALFARIZI", img: "./asset/img/murid/FATIH_RIZIQ_ALFARIZI.webp", number: "10" },
-        { name: "FIKRI", img: "./asset/img/murid/FIKRI.webp", number: "11" },
-        { name: "KAILA AZAHRA", img: "./asset/img/murid/KAILA_AZAHRA.webp", number: "12" },
-        { name: "M. RAHADIAN BAISUNI", img: "./asset/img/murid/M_RAHADIAN_BAISUNI.webp", number: "13" },
-        { name: "MAYA", img: "./asset/img/murid/MAYA.webp", number: "14" },
-        { name: "META DWI ALFIANA", img: "./asset/img/murid/META_DWI_ALFIANA.webp", number: "15" },
-        { name: "MOCH FAHMI", img: "./asset/img/murid/MOCH_FAHMI.webp", number: "16" },
-        { name: "MUHAMAD ADI", img: "./asset/img/murid/MUHAMAD_ADI.webp", number: "17" },
-        { name: "MUHAMMAD AL FARIDZY", img: "./asset/img/murid/MUHAMMAD_AL_FARIDZY.webp", number: "18" },
-        { name: "NANI NURONIAH", img: "./asset/img/murid/NANI_NURONIAH.webp", number: "19" },
-        { name: "NAZWA AULIA RULYIANTI", img: "./asset/img/murid/NAZWA_AULIA_RULYIANTI.webp", number: "20" },
-        { name: "NINDY TRIYANTI SOMANTRI", img: "./asset/img/murid/NINDY_TRIYANTI_SOMANTRI.webp", number: "21" },
-        { name: "NOVITA RIZKI", img: "./asset/img/murid/NOVITA_RIZKI.webp", number: "22" },
-        { name: "PANI PELISA", img: "./asset/img/murid/PANI_PELISA.webp", number: "23" },
-        { name: "PERA HERAWATI", img: "./asset/img/murid/PERA_HERAWATI.webp", number: "24" },
-        { name: "RAKA SYAPUTRA PRATAMA", img: "./asset/img/murid/RAKA_SYAPUTRA_PRATAMA.webp", number: "25" },
-        { name: "REYGA AGUNG PRATAMA", img: "./asset/img/murid/REYGA_AGUNG_PRATAMA.webp", number: "26" },
-        { name: "RIPA ADITIA RAMADANI", img: "./asset/img/murid/RIPA_ADITIA_RAMADANI.webp", number: "27" },
-        { name: "RIZKI ANDIKA ADITIA", img: "./asset/img/murid/RIZKI_ANDIKA_ADITIA.webp", number: "28" },
-        { name: "SHEREN HUMAIROH", img: "./asset/img/murid/SHEREN_HUMAIROH.webp", number: "29" },
-        { name: "SINTIA SALSABILA", img: "./asset/img/murid/SINTIA_SALSABILA.webp", number: "30" },
-        { name: "YOGA ADITYA ERLANGGA", img: "./asset/img/murid/YOGA_ADITYA_ERLANGGA.webp", number: "31" }
-    ];
-
-    const projects = [
-        { name: "E-Learning Platform", tech: ["Laravel", "Vue"], desc: "Platform pembelajaran daring untuk siswa SMK", img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80" },
-        { name: "Inventory System", tech: ["React", "Node"], desc: "Sistem inventaris barang sekolah", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" },
-        { name: "Game Edukasi", tech: ["Unity", "C#"], desc: "Game adventure edukasi sejarah indonesia", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&q=80" }
-    ];
-
-    // =============================================
-    // 2. TRANSLATIONS
-    // =============================================
-    const translations = {
-        id: {
-            nav_students: "Students", nav_portfolio: "Portfolio", nav_project: "Project", nav_contact: "Contact",
-            hero_major: "Pengembangan Perangkat Lunak dan Gim",
-            hero_desc: "Kelas yang inovatif, kolaboratif, dan berprestasi di bidang teknologi informasi.",
-            hero_btn_explore: "Jelajahi Kelas", hero_btn_contact: "Hubungi Kami",
-            hero_stat_students: "Siswa", hero_stat_org: "Pengurus", hero_stat_act: "Aktivitas", hero_stat_achieve: "Prestasi",
-            hero_typing: ["Kode Masa Depan", "Inovasi Tanpa Batas", "Bersatu dalam Teknologi"],
-            about_title: "Tentang Kelas", about_subtitle: "Mengenal lebih dekat kelas XII PPLG",
-            about_visi: "Visi", about_visi_text: "Menjadi kelas yang unggul dalam kompetisi, erat dalam kebersamaan, dan cekatan dalam berkarya teknologi.",
-            about_misi: "Misi", about_misi_text: "Membangun budaya belajar yang efektif, mengembangkan bakat setiap siswa, dan mewujudkan project nyata yang bermanfaat.",
-            about_nilai: "Nilai Kelas", about_nilai_text: "Integritas, Inovasi, Kolaborasi, dan Kerja Keras menjadi fondasi utama kami dalam berkarya.",
-            port_title: "Galeri", proj_title: "Project Kami", contact_title: "Hubungi Kami",
-            contact_name: "Nama", contact_email: "Email", contact_msg: "Pesan", contact_btn: "Kirim Pesan",
-            footer_desc: "Kelas unggulan yang berfokus pada pengembangan perangkat lunak dan gim di SMK.",
-            footer_contact: "Hubungi Kami",
-            alert_success: "Pesan Berhasil Dikirim", alert_msg: "Terima kasih telah menghubungi kami!",
-            search_placeholder: "Cari nama siswa...", filter_all: "Semua Absen",
-            members_label: "Anggota Kelas", members_title: "Seluruh Siswa XII PPLG",
-            members_desc: "31 siswa yang bersatu membangun masa depan digital.",
-            members_search: "Cari nama siswa...", members_filter_all: "Semua Absen",
-            members_empty: "Siswa tidak ditemukan", btn_show_all: "Tampilkan Semua", btn_show_less: "Tampilkan Sedikit"
-        },
-        en: {
-            nav_students: "Students", nav_portfolio: "Portfolio", nav_project: "Project", nav_contact: "Contact",
-            hero_major: "Software and Game Development",
-            hero_desc: "An innovative, collaborative, and accomplished class in information technology.",
-            hero_btn_explore: "Explore Class", hero_btn_contact: "Contact Us",
-            hero_stat_students: "Students", hero_stat_org: "Org Members", hero_stat_act: "Activities", hero_stat_achieve: "Achievements",
-            hero_typing: ["Coding the Future", "Endless Innovation", "United in Technology"],
-            about_title: "About Class", about_subtitle: "Getting to know class XII PPLG",
-            about_visi: "Vision", about_visi_text: "To be a class excelling in competition, close in togetherness, and adept at creating technology.",
-            about_misi: "Mission", about_misi_text: "Building an effective learning culture, developing every student's talent, and realizing useful real projects.",
-            about_nilai: "Class Values", about_nilai_text: "Integrity, Innovation, Collaboration, and Hard Work are our main foundations in creating.",
-            port_title: "Gallery", proj_title: "Our Projects", contact_title: "Contact Us",
-            contact_name: "Name", contact_email: "Email", contact_msg: "Message", contact_btn: "Send Message",
-            footer_desc: "An outstanding class focused on software and game development at Vocational High School.",
-            footer_contact: "Contact Us",
-            alert_success: "Message Sent Successfully", alert_msg: "Thank you for contacting us!",
-            search_placeholder: "Search student name...", filter_all: "All Numbers",
-            members_label: "Class Members", members_title: "All Students XII PPLG",
-            members_desc: "31 students united to build the digital future.",
-            members_search: "Search student name...", members_filter_all: "All Numbers",
-            members_empty: "Student not found", btn_show_all: "Show All", btn_show_less: "Show Less"
-        }
-    };
-
-    // =============================================
-    // 3. STATE & INITIALIZATION
-    // =============================================
-    let currentLang = localStorage.getItem('lang') || 'id';
-    let isDark = localStorage.getItem('dark') === 'true';
-    let currentModalIndex = -1;
-    let filteredPins = [...pinData];
-    const INITIAL_DISPLAY_COUNT = 10;
-
-    document.documentElement.classList.toggle('dark', isDark);
-    
-    window.onload = () => {
-        setTimeout(() => {
-            document.getElementById('loader').style.opacity = '0';
-            setTimeout(() => document.getElementById('loader').style.display = 'none', 500);
-        }, 1000);
-        
-        AOS.init({ once: true, duration: 800 });
-        setLanguage(currentLang);
-        initTyping();
-        initCounters();
-        renderStructure();
-        initMembers(); // Menggabungkan logic Member/Student Search & Show More
-        renderGallery('all');
-        renderProjects();
-        initFAQ();
-        initListeners();
-    };
-
-    // =============================================
-    // 4. CORE FUNCTIONS
-    // =============================================
-    function setLanguage(lang) {
-        currentLang = lang;
-        localStorage.setItem('lang', lang);
-        document.getElementById('lang-toggle').innerText = lang === 'id' ? 'EN' : 'ID';
-        
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[lang][key]) {
-                el.innerText = translations[lang][key];
-            }
-        });
-        
-        // Update placeholders
-        const memberSearch = document.getElementById('member-search');
-        if (memberSearch) memberSearch.placeholder = translations[lang].members_search;
-        
-        // Update toggle button text if exists
-        const toggleBtn = document.getElementById('membersToggle');
-        if (toggleBtn && toggleBtn.getAttribute('data-open') === 'false') {
-            toggleBtn.innerText = translations[lang].btn_show_all;
-        } else if (toggleBtn && toggleBtn.getAttribute('data-open') === 'true') {
-            toggleBtn.innerText = translations[lang].btn_show_less;
-        }
-    }
-
-    function initTyping() {
-        const el = document.getElementById('typing-text');
-        const texts = translations[currentLang].hero_typing;
-        let textIdx = 0, charIdx = 0, isDeleting = false;
-        
-        function type() {
-            const currentText = translations[currentLang].hero_typing[textIdx];
-            el.textContent = currentText.substring(0, charIdx);
-            
-            if (!isDeleting && charIdx < currentText.length) {
-                charIdx++; setTimeout(type, 100);
-            } else if (!isDeleting && charIdx === currentText.length) {
-                isDeleting = true; setTimeout(type, 2000);
-            } else if (isDeleting && charIdx > 0) {
-                charIdx--; setTimeout(type, 50);
-            } else {
-                isDeleting = false; textIdx = (textIdx + 1) % texts.length; setTimeout(type, 500);
-            }
-        }
-        type();
-    }
-
-    function initCounters() {
-        const counters = document.querySelectorAll('.counter');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    const target = +el.getAttribute('data-target');
-                    let count = 0;
-                    const updateCount = () => {
-                        const increment = target / 60;
-                        if (count < target) {
-                            count += increment; el.innerText = Math.ceil(count); requestAnimationFrame(updateCount);
-                        } else el.innerText = target + '+';
-                    };
-                    updateCount();
-                    observer.unobserve(el);
-                }
-            });
-        }, { threshold: 0.5 });
-        counters.forEach(c => observer.observe(c));
-    }
-
-    // =============================================
-    // 5. RENDER LAYOUTS
-    // =============================================
-function renderStructure() {
-    const topContainer = document.getElementById('struct-top');
-    const midContainer = document.getElementById('struct-mid');
-    const bottomContainer = document.getElementById('struct-bottom');
-
-    // Pisahkan secara logis dari 1 array utama berdasarkan jabatan (role)
-    const topRoles = ["Ketua Kelas", "Wakil Ketua"];
-    const midRoles = ["Sekertaris", "Bendahara"];
-    
-    const topData = classStructure.filter(s => topRoles.includes(s.role));
-    const midData = classStructure.filter(s => midRoles.includes(s.role));
-    const bottomData = classStructure.filter(s => !topRoles.includes(s.role) && !midRoles.includes(s.role));
-
-    // Template Card Full Image + Overlay (Tanpa Background Card)
-    const cardHTML = (s, isTop = false) => `
-        <div class="org-item relative group ${isTop ? 'org-top' : ''} w-28 md:w-36 aspect-[3/4] overflow-hidden rounded-xl shadow-sm hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer"
-             onclick="openMemberModal('${s.name}', '${s.img}', '${s.number}')" data-aos="zoom-in" data-aos-delay="100">
-             
-            <!-- Foto Full -->
-            <img src="${s.img}" alt="${s.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
-            
-            <!-- Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
-            
-            <!-- Teks Jabatan & Nama -->
-            <div class="absolute bottom-0 left-0 right-0 p-3 text-center transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                <p class="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-accent mb-1">${s.role}</p>
-                <h4 class="font-bold text-[11px] md:text-xs text-white truncate">${s.name}</h4>
-            </div>
-        </div>
-    `;
-
-    // Render ke masing-masing container
-    topContainer.innerHTML = topData.map(s => cardHTML(s, true)).join('');
-    midContainer.innerHTML = midData.map(s => cardHTML(s)).join('');
-    bottomContainer.innerHTML = bottomData.map(s => cardHTML(s)).join('');
-}
-
-    function renderMembers(filter = 'all', search = '') {
-    const visibleGrid = document.getElementById('membersVisible');
-    const hiddenGrid = document.getElementById('membersHidden');
-    
-    let data = [...studentsAll];
-    
-    // Filter
-    if (filter !== 'all') data = data.filter(s => s.number === filter);
-    
-    // Search
-    if (search) data = data.filter(s => s.name.toLowerCase().includes(search.toLowerCase()));
-    
-    // Pure Photo Grid Card (Tanpa background di belakang gambar)
-    const cardHTML = (s) => `
-        <div class="group relative aspect-[4/5] overflow-hidden cursor-pointer"
-             onclick="openMemberModal('${s.name}', '${s.img}', '${s.number}')">
-             
-            <!-- Murni Hanya Gambar -->
-            <img src="${s.img}" alt="${s.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
-            
-            <!-- Gradient Overlay agar teks terbaca -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
-            
-            <!-- Teks Nama & Nomor Absen -->
-            <div class="absolute bottom-0 left-0 right-0 p-3 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                <h4 class="font-bold text-[11px] md:text-xs text-white truncate">${s.name}</h4>
-                <p class="text-[9px] md:text-[10px] text-accent font-medium mt-0.5">No. ${s.number}</p>
-            </div>
-        </div>
-    `;
-
-    // Reset state
-    visibleGrid.innerHTML = '';
-    hiddenGrid.innerHTML = '';
-    hiddenGrid.classList.add('hidden');
-    
-    const toggleBtn = document.getElementById('membersToggle');
-    toggleBtn.setAttribute('data-open', 'false');
-    toggleBtn.innerText = translations[currentLang].btn_show_all || 'Tampilkan Semua';
-
-    if(data.length === 0) {
-        visibleGrid.innerHTML = `<div class="col-span-full text-center text-soft dark:text-gray-400 py-10">${translations[currentLang].members_empty}</div>`;
-        toggleBtn.classList.add('hidden');
-        return;
-    }
-
-    if(data.length <= INITIAL_DISPLAY_COUNT) {
-        toggleBtn.classList.add('hidden');
-        visibleGrid.innerHTML = data.map(cardHTML).join('');
-    } else {
-        toggleBtn.classList.remove('hidden');
-        visibleGrid.innerHTML = data.slice(0, INITIAL_DISPLAY_COUNT).map(cardHTML).join('');
-        hiddenGrid.innerHTML = data.slice(INITIAL_DISPLAY_COUNT).map(cardHTML).join('');
-    }
-}
-
-
-    function renderGallery(filter) {
-        const container = document.getElementById('masonry-container');
-        filteredPins = filter === 'all' ? [...pinData] : pinData.filter(p => p.category === filter);
-        
-        container.innerHTML = filteredPins.map((p, idx) => `
-            <div class="masonry-item fade-in" onclick="openImageModal(${idx})">
-                <img src="${p.img}" alt="${p.title}" loading="lazy" class="w-full">
-                <div class="masonry-overlay">
-                    <i class="fas fa-search-plus text-white text-2xl"></i>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    function initFAQ() {
-        const container = document.getElementById('faq-container');
-        const faqs = [
-            { q: "Apa itu PPLG?", a: "PPLG adalah singkatan dari Pengembangan Perangkat Lunak dan Gim, jurusan keahlian di SMK yang mempelajari pemrograman software dan game." },
-            { q: "Berapa jumlah siswa?", a: "Terdapat 31 siswa aktif di kelas XII PPLG." },
-            { q: "Apa kegiatan unggulan kelas?", a: "Kegiatan unggulan meliputi coding bersama, hackathon, dan pengembangan project nyata." },
-            { q: "Bagaimana cara menghubungi kelas?", a: "Anda bisa menghubungi kami melalui formulir kontak di bawah atau email resmi sekolah." }
-        ];
-        container.innerHTML = faqs.map((f, i) => `
-            <div class="bg-white dark:bg-primary rounded-xl shadow-md overflow-hidden">
-                <button class="faq-btn w-full flex justify-between items-center p-5 text-left font-medium hover:text-accent transition" onclick="toggleFAQ(${i})">
-                    <span>${f.q}</span>
-                    <i class="fas fa-chevron-down transition-transform duration-300" id="faq-icon-${i}"></i>
-                </button>
-                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-5" id="faq-content-${i}">
-                    <p class="pb-5 text-soft dark:text-gray-300 text-sm">${f.a}</p>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    // =============================================
-    // 6. UI INTERACTIONS & LISTENERS
-    // =============================================
-    function initMembers() {
-        const filterSelect = document.getElementById('member-filter');
-        const searchInput = document.getElementById('member-search');
-
-        // Populate select dropdown
-        studentsAll.forEach(s => {
-            const opt = document.createElement('option');
-            opt.value = s.number; 
-            opt.innerText = s.number;
-            filterSelect.appendChild(opt);
-        });
-
-        searchInput.addEventListener('input', () => renderMembers(filterSelect.value, searchInput.value));
-        filterSelect.addEventListener('change', () => renderMembers(filterSelect.value, searchInput.value));
-
-        renderMembers(); // Initial render
-    }
-
-    function toggleMembers() {
-        const hiddenGrid = document.getElementById('membersHidden');
-        const toggleBtn = document.getElementById('membersToggle');
-        const isOpen = toggleBtn.getAttribute('data-open') === 'true';
-
-        if (isOpen) {
-            hiddenGrid.classList.add('hidden');
-            toggleBtn.innerText = translations[currentLang].btn_show_all;
-            toggleBtn.setAttribute('data-open', 'false');
-        } else {
-            hiddenGrid.classList.remove('hidden');
-            toggleBtn.innerText = translations[currentLang].btn_show_less;
-            toggleBtn.setAttribute('data-open', 'true');
-        }
-    }
-
-    function openMemberModal(name, img, number) {
-        const data = {
-            title: name,
-            img: img,
-            category: currentLang === 'id' ? 'Siswa' : 'Student',
-            desc: currentLang === 'id' ? `Nomor Absen: ${number}` : `Student Number: ${number}`,
-            likes: 0
-        };
-        filteredPins = [data]; 
-        currentModalIndex = 0;
-        openImageModal(0);
-    }
-
-    function initListeners() {
-        // Navbar scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            const btt = document.getElementById('back-to-top');
-            if (window.scrollY > 50) { nav.classList.add('nav-scrolled'); } 
-            else { nav.classList.remove('nav-scrolled'); }
-            
-            if (window.scrollY > 500) { btt.classList.remove('hidden'); btt.classList.add('flex'); } 
-            else { btt.classList.add('hidden'); btt.classList.remove('flex'); }
-
-            // Active nav
-            const sections = document.querySelectorAll('section[id]');
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (window.scrollY >= sectionTop) current = section.getAttribute('id');
-            });
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('text-accent');
-                if (link.getAttribute('href') === `#${current}`) link.classList.add('text-accent');
-            });
-        });
-
-        // Dark Mode
-        document.getElementById('dark-toggle').addEventListener('click', () => {
-            isDark = !isDark;
-            document.documentElement.classList.toggle('dark', isDark);
-            localStorage.setItem('dark', isDark);
-        });
-
-        // Lang
-        document.getElementById('lang-toggle').addEventListener('click', () => {
-            setLanguage(currentLang === 'id' ? 'en' : 'id');
-        });
-
-        // Hamburger
-        document.getElementById('hamburger').addEventListener('click', () => {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-        
-        // Close mobile menu on link click
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
-        });
-
-        // Back to top
-        document.getElementById('back-to-top').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        // Achieve Filter
-        document.querySelectorAll('.achieve-filter').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.achieve-filter').forEach(b => b.classList.replace('bg-accent', 'bg-soft'));
-                this.classList.replace('bg-soft', 'bg-accent');
-                const filter = this.getAttribute('data-filter');
-                document.querySelectorAll('.achieve-item').forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.style.display = 'block'; item.classList.add('fade-in');
-                    } else item.style.display = 'none';
-                });
-            });
-        });
-
-        // Gallery Filter
-        document.querySelectorAll('.gal-filter').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.gal-filter').forEach(b => b.classList.replace('bg-accent', 'bg-soft'));
-                this.classList.replace('bg-soft', 'bg-accent');
-                renderGallery(this.getAttribute('data-filter'));
-            });
-        });
-
-        // Contact Form
-        document.getElementById('contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            document.getElementById('alert-title').innerText = translations[currentLang].alert_success;
-            document.getElementById('alert-msg').innerText = translations[currentLang].alert_msg;
-            document.getElementById('alert-modal').classList.remove('hidden');
-            e.target.reset();
-        });
-
-        // Keyboard ESC & Arrows
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                document.getElementById('image-modal').classList.add('hidden');
-                document.getElementById('alert-modal').classList.add('hidden');
-            }
-            if (!document.getElementById('image-modal').classList.contains('hidden')) {
-                if (e.key === 'ArrowLeft') navigateModal(-1);
-                if (e.key === 'ArrowRight') navigateModal(1);
-            }
-        });
-
-        document.getElementById('modal-close').addEventListener('click', () => document.getElementById('image-modal').classList.add('hidden'));
-        document.getElementById('modal-prev').addEventListener('click', () => navigateModal(-1));
-        document.getElementById('modal-next').addEventListener('click', () => navigateModal(1));
-    }
-
-    function toggleFAQ(idx) {
-        const content = document.getElementById(`faq-content-${idx}`);
-        const icon = document.getElementById(`faq-icon-${idx}`);
-        const isOpen = content.style.maxHeight;
-        
-        document.querySelectorAll('.faq-content').forEach(el => el.style.maxHeight = null);
-        document.querySelectorAll('.faq-btn i').forEach(el => el.classList.remove('rotate-180'));
-        
-        if (!isOpen) {
-            content.style.maxHeight = content.scrollHeight + 'px';
-            icon.classList.add('rotate-180');
-        }
-    }
-
-    function openImageModal(index) {
-        currentModalIndex = index;
-        const data = filteredPins[index];
-        document.getElementById('modal-img').src = data.img;
-        document.getElementById('modal-title').innerText = data.title;
-        document.getElementById('modal-cat').innerText = data.category;
-        document.getElementById('modal-desc').innerText = data.desc || 'Deskripsi kegiatan kelas XII PPLG';
-        document.getElementById('modal-likes').innerText = data.likes;
-        document.getElementById('image-modal').classList.remove('hidden');
-        document.getElementById('image-modal').classList.add('flex');
-    }
-
-    function navigateModal(dir) {
-        let newIdx = currentModalIndex + dir;
-        if (newIdx < 0) newIdx = filteredPins.length - 1;
-        if (newIdx >= filteredPins.length) newIdx = 0;
-        openImageModal(newIdx);
-    }
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="./asset/js/script.js" defer></script>
 </body>
 </html>

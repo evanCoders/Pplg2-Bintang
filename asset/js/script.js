@@ -1,733 +1,685 @@
-(function () {
-    'use strict';
+// Moved from inline script in index.html
 
-    // =============================================
-    // DATA
-    // =============================================
+// =============================================
+// 1. DATA COLLECTION
+// =============================================
+const pinData = [
+    { id: 1, img: "./asset/img/galery/ala_ala.jpg", title: "Ala Ala Kegiatan", category: "kegiatan", user: "tim_pplg", likes: 42 },
+    { id: 2, img: "./asset/img/galery/apalah.jpg", title: "Momen Santai", category: "siswa", user: "kelas_xi", likes: 38 },
+    { id: 3, img: "./asset/img/galery/artis.jpeg", title: "Artis Kelas", category: "siswa", user: "pplg_fun", likes: 56 },
+    { id: 4, img: "./asset/img/galery/bakar.jpg", title: "Bakaran Bersama", category: "kegiatan", user: "tim_bbq", likes: 71 },
+    { id: 5, img: "./asset/img/galery/bapak_bapak.jpg", title: "Kunjungan Guru", category: "guru", user: "guru_besar", likes: 29 },
+    { id: 6, img: "./asset/img/galery/baris.JPG", title: "Baris Berbaris", category: "upacara", user: "pbb_team", likes: 33 },
+    { id: 7, img: "./asset/img/galery/bataktoba.jpeg", title: "Batak Toba Pride", category: "siswa", user: "batak_vibes", likes: 48 },
+    { id: 8, img: "./asset/img/galery/bataktoba2.jpeg", title: "Batak Toba 2", category: "siswa", user: "batak_vibes", likes: 44 },
+    { id: 9, img: "./asset/img/galery/belajar.jpg", title: "Sesi Belajar", category: "kegiatan", user: "study_group", likes: 65 },
+    { id: 10, img: "./asset/img/galery/bersih_bersih.jpg", title: "Bersih Bersih Kelas", category: "kegiatan", user: "clean_team", likes: 22 },
+    { id: 11, img: "./asset/img/galery/briping.JPG", title: "Briefing Tim", category: "kegiatan", user: "project_lead", likes: 37 },
+    { id: 12, img: "./asset/img/galery/ee.jpeg", title: "Foto Ee", category: "siswa", user: "ee_photos", likes: 19 },
+    { id: 13, img: "./asset/img/galery/gaya.jpg", title: "Gaya Keren", category: "siswa", user: "fashion_pplg", likes: 83 },
+    { id: 14, img: "./asset/img/galery/gaya2.jpg", title: "Gaya Keren 2", category: "siswa", user: "fashion_pplg", likes: 77 },
+    { id: 15, img: "./asset/img/galery/gaya4.jpeg", title: "Gaya 4", category: "siswa", user: "style_team", likes: 51 },
+    { id: 16, img: "./asset/img/galery/hari_guru_day2.JPG", title: "Hari Guru Day 2", category: "guru", user: "guru_day", likes: 62 },
+    { id: 17, img: "./asset/img/galery/hari_guru.jpg", title: "Hari Guru", category: "guru", user: "guru_day", likes: 58 },
+    { id: 18, img: "./asset/img/galery/hari_guru5.jpg", title: "Hari Guru 5", category: "guru", user: "guru_day", likes: 45 },
+    { id: 19, img: "./asset/img/galery/hitam.jpeg", title: "Foto Hitam", category: "siswa", user: "dark_mode", likes: 34 },
+    { id: 20, img: "./asset/img/galery/hitam2.jpeg", title: "Foto Hitam 2", category: "siswa", user: "dark_mode", likes: 31 },
+    { id: 21, img: "./asset/img/galery/hukum.JPG", title: "Pelajaran Hukum", category: "kegiatan", user: "civic_team", likes: 27 },
+    { id: 22, img: "./asset/img/galery/ini.jpeg", title: "Batak toba era", category: "kegiatan", user: "random_fun", likes: 15 },
+    { id: 23, img: "./asset/img/galery/jalan2.jpg", title: "Jalan Jalan", category: "kegiatan", user: "outing_team", likes: 69 },
+    { id: 24, img: "./asset/img/galery/lapor1.jpg", title: "Laporan 1", category: "kegiatan", user: "report_team", likes: 24 },
+    { id: 25, img: "./asset/img/galery/lapor2.jpg", title: "Laporan 2", category: "kegiatan", user: "report_team", likes: 21 },
+    { id: 26, img: "./asset/img/galery/lapor3.jpg", title: "Laporan 3", category: "kegiatan", user: "report_team", likes: 18 },
+    { id: 27, img: "./asset/img/galery/lapor4.jpg", title: "Laporan 4", category: "kegiatan", user: "report_team", likes: 20 },
+    { id: 28, img: "./asset/img/galery/lomba.JPG", title: "Lomba Seru", category: "lomba", user: "competition", likes: 88 },
+    { id: 29, img: "./asset/img/galery/lomba2.JPG", title: "Lomba 2", category: "lomba", user: "competition", likes: 74 },
+    { id: 30, img: "./asset/img/galery/nangis.jpeg", title: "Momen Emosional", category: "siswa", user: "emotional", likes: 92 },
+    { id: 31, img: "./asset/img/galery/olga.jpg", title: "Olga Moment", category: "siswa", user: "olga_photos", likes: 55 },
+    { id: 32, img: "./asset/img/galery/olga2.jpg", title: "Olga 2", category: "siswa", user: "olga_photos", likes: 49 },
+    { id: 33, img: "./asset/img/galery/parit1.JPG", title: "Parit Bersih", category: "kegiatan", user: "clean_team", likes: 16 },
+    { id: 34, img: "./asset/img/galery/pbb.JPG", title: "Latihan PBB", category: "upacara", user: "pbb_team", likes: 40 },
+    { id: 35, img: "./asset/img/galery/piala.JPG", title: "Trofi Juara", category: "lomba", user: "winner_team", likes: 96 },
+    { id: 36, img: "./asset/img/galery/piala1.JPG", title: "Piala 1", category: "lomba", user: "winner_team", likes: 89 },
+    { id: 37, img: "./asset/img/galery/piala2.JPG", title: "Piala 2", category: "lomba", user: "winner_team", likes: 81 },
+    { id: 38, img: "./asset/img/galery/piala3.JPG", title: "Piala 3", category: "lomba", user: "winner_team", likes: 73 },
+    { id: 39, img: "./asset/img/galery/piala4.JPG", title: "Piala 4", category: "lomba", user: "winner_team", likes: 67 },
+    { id: 40, img: "./asset/img/galery/pp.jpg", title: "PP Kegiatan", category: "kegiatan", user: "pp_team", likes: 35 },
+    { id: 41, img: "./asset/img/galery/pramuka.jpeg", title: "Pramuka Adventure", category: "kegiatan", user: "scout_team", likes: 63 },
+    { id: 42, img: "./asset/img/galery/renang.jpg", title: "Lomba Renang", category: "lomba", user: "swim_team", likes: 78 },
+    { id: 43, img: "./asset/img/galery/variasi.JPG", title: "Variasi Kreatif", category: "kegiatan", user: "creative_team", likes: 52 },
+    { id: 44, img: "./asset/img/galery/yesus.jpg", title: "Momen Rohani", category: "kegiatan", user: "spiritual", likes: 46 },
+];
 
-    const pinData = [
-        { id: 1, img: "./asset/img/galery/ala_ala.jpg", title: "Ala Ala Kegiatan", category: "kegiatan", user: "tim_pplg", likes: 42 },
-        { id: 2, img: "./asset/img/galery/apalah.jpg", title: "Momen Santai", category: "siswa", user: "kelas_xi", likes: 38 },
-        { id: 3, img: "./asset/img/galery/artis.jpeg", title: "Artis Kelas", category: "siswa", user: "pplg_fun", likes: 56 },
-        { id: 4, img: "./asset/img/galery/bakar.jpg", title: "Bakaran Bersama", category: "kegiatan", user: "tim_bbq", likes: 71 },
-        { id: 5, img: "./asset/img/galery/bapak_bapak.jpg", title: "Kunjungan Guru", category: "guru", user: "guru_besar", likes: 29 },
-        { id: 6, img: "./asset/img/galery/baris.JPG", title: "Baris Berbaris", category: "upacara", user: "pbb_team", likes: 33 },
-        { id: 7, img: "./asset/img/galery/bataktoba.jpeg", title: "Batak Toba Pride", category: "siswa", user: "batak_vibes", likes: 48 },
-        { id: 8, img: "./asset/img/galery/bataktoba2.jpeg", title: "Batak Toba 2", category: "siswa", user: "batak_vibes", likes: 44 },
-        { id: 9, img: "./asset/img/galery/belajar.jpg", title: "Sesi Belajar", category: "kegiatan", user: "study_group", likes: 65 },
-        { id: 10, img: "./asset/img/galery/bersih_bersih.jpg", title: "Bersih Bersih Kelas", category: "kegiatan", user: "clean_team", likes: 22 },
-        { id: 11, img: "./asset/img/galery/briping.JPG", title: "Briefing Tim", category: "kegiatan", user: "project_lead", likes: 37 },
-        { id: 12, img: "./asset/img/galery/ee.jpeg", title: "Foto Ee", category: "siswa", user: "ee_photos", likes: 19 },
-        { id: 13, img: "./asset/img/galery/gaya.jpg", title: "Gaya Keren", category: "siswa", user: "fashion_pplg", likes: 83 },
-        { id: 14, img: "./asset/img/galery/gaya2.jpg", title: "Gaya Keren 2", category: "siswa", user: "fashion_pplg", likes: 77 },
-        { id: 15, img: "./asset/img/galery/gaya4.jpeg", title: "Gaya 4", category: "siswa", user: "style_team", likes: 51 },
-        { id: 16, img: "./asset/img/galery/hari_guru_day2.JPG", title: "Hari Guru Day 2", category: "guru", user: "guru_day", likes: 62 },
-        { id: 17, img: "./asset/img/galery/hari_guru.jpg", title: "Hari Guru", category: "guru", user: "guru_day", likes: 58 },
-        { id: 18, img: "./asset/img/galery/hari_guru5.jpg", title: "Hari Guru 5", category: "guru", user: "guru_day", likes: 45 },
-        { id: 19, img: "./asset/img/galery/hitam.jpeg", title: "Foto Hitam", category: "siswa", user: "dark_mode", likes: 34 },
-        { id: 20, img: "./asset/img/galery/hitam2.jpeg", title: "Foto Hitam 2", category: "siswa", user: "dark_mode", likes: 31 },
-        { id: 21, img: "./asset/img/galery/hukum.JPG", title: "Pelajaran Hukum", category: "kegiatan", user: "civic_team", likes: 27 },
-        { id: 22, img: "./asset/img/galery/ini.jpeg", title: "Ini Itu", category: "kegiatan", user: "random_fun", likes: 15 },
-        { id: 23, img: "./asset/img/galery/jalan2.jpg", title: "Jalan Jalan", category: "kegiatan", user: "outing_team", likes: 69 },
-        { id: 24, img: "./asset/img/galery/lapor1.jpg", title: "Laporan 1", category: "kegiatan", user: "report_team", likes: 24 },
-        { id: 25, img: "./asset/img/galery/lapor2.jpg", title: "Laporan 2", category: "kegiatan", user: "report_team", likes: 21 },
-        { id: 26, img: "./asset/img/galery/lapor3.jpg", title: "Laporan 3", category: "kegiatan", user: "report_team", likes: 18 },
-        { id: 27, img: "./asset/img/galery/lapor4.jpg", title: "Laporan 4", category: "kegiatan", user: "report_team", likes: 20 },
-        { id: 28, img: "./asset/img/galery/lomba.JPG", title: "Lomba Seru", category: "lomba", user: "competition", likes: 88 },
-        { id: 29, img: "./asset/img/galery/lomba2.JPG", title: "Lomba 2", category: "lomba", user: "competition", likes: 74 },
-        { id: 30, img: "./asset/img/galery/nangis.jpeg", title: "Momen Emosional", category: "siswa", user: "emotional", likes: 92 },
-        { id: 31, img: "./asset/img/galery/olga.jpg", title: "Olga Moment", category: "siswa", user: "olga_photos", likes: 55 },
-        { id: 32, img: "./asset/img/galery/olga2.jpg", title: "Olga 2", category: "siswa", user: "olga_photos", likes: 49 },
-        { id: 33, img: "./asset/img/galery/parit1.JPG", title: "Parit Bersih", category: "kegiatan", user: "clean_team", likes: 16 },
-        { id: 34, img: "./asset/img/galery/pbb.JPG", title: "Latihan PBB", category: "upacara", user: "pbb_team", likes: 40 },
-        { id: 35, img: "./asset/img/galery/piala.JPG", title: "Trofi Juara", category: "lomba", user: "winner_team", likes: 96 },
-        { id: 36, img: "./asset/img/galery/piala1.JPG", title: "Piala 1", category: "lomba", user: "winner_team", likes: 89 },
-        { id: 37, img: "./asset/img/galery/piala2.JPG", title: "Piala 2", category: "lomba", user: "winner_team", likes: 81 },
-        { id: 38, img: "./asset/img/galery/piala3.JPG", title: "Piala 3", category: "lomba", user: "winner_team", likes: 73 },
-        { id: 39, img: "./asset/img/galery/piala4.JPG", title: "Piala 4", category: "lomba", user: "winner_team", likes: 67 },
-        { id: 40, img: "./asset/img/galery/pp.jpg", title: "PP Kegiatan", category: "kegiatan", user: "pp_team", likes: 35 },
-        { id: 41, img: "./asset/img/galery/pramuka.jpeg", title: "Pramuka Adventure", category: "kegiatan", user: "scout_team", likes: 63 },
-        { id: 42, img: "./asset/img/galery/renang.jpg", title: "Lomba Renang", category: "lomba", user: "swim_team", likes: 78 },
-        { id: 43, img: "./asset/img/galery/variasi.JPG", title: "Variasi Kreatif", category: "kegiatan", user: "creative_team", likes: 52 },
-        { id: 44, img: "./asset/img/galery/yesus.jpg", title: "Momen Rohani", category: "kegiatan", user: "spiritual", likes: 46 }
-    ];
+const classStructure = [
+    { name: "DEWI ROBIATUL ADAWIYAH", img: "./asset/img/murid/DEWI_ROBIATUL_ADAWIYAH.webp", role: "Wali kelas", color: "rose", number: "01" },
+    { name: "RAKA SYAPUTRA PRATAMA", img: "./asset/img/murid/RAKA_SYAPUTRA_PRATAMA.webp", role: "Sekertaris", color: "rose", number: "02" },
+    { name: "ALDI SAEFUL NIZAR", img: "./asset/img/murid/ALDI_SAEFUL_NIZAR.webp", role: "Sekertaris", color: "rose", number: "03" },
+    { name: "KAILA AZAHRA", img: "./asset/img/murid/KAILA_AZAHRA.webp", role: "Sekertaris", color: "rose", number: "04" },
+    { name: "NAZWA AULIA RULYIANTI", img: "./asset/img/murid/NAZWA_AULIA_RULYIANTI.webp", role: "Sekertaris", color: "rose", number: "05" },
+    { name: "SINTIA SALSABILA", img: "./asset/img/murid/SINTIA_SALSABILA.webp", role: "Bendahara", color: "rose", number: "06" },
+    { name: "RIPA ADITIA RAMADANI", img: "./asset/img/murid/RIPA_ADITIA_RAMADANI.webp", role: "Keamanan", color: "sky", number: "07" },
+    { name: "AGUNG RAHMANUDIN", img: "./asset/img/murid/AGUNG_RAHMANUDIN.webp", role: "Keamanan", color: "sky", number: "08" },
+    { name: "FIKRI", img: "./asset/img/murid/FIKRI.webp", role: "Kebersihan", color: "teal", number: "09" },
+    { name: "NINDY TRIYANTI SOMANTRI", img: "./asset/img/murid/NINDY_TRIYANTI_SOMANTRI.webp", role: "Kebersihan", color: "teal", number: "10" },
+    { name: "NOVITA RIZKI", img: "./asset/img/murid/NOVITA_RIZKI.webp", role: "Kerohanian", color: "orange", number: "11" },
+    { name: "META DWI ALFIANA", img: "./asset/img/murid/META_DWI_ALFIANA.webp", role: "Kerohanian", color: "orange", number: "12" },
+    { name: "ADE RAMDANI", img: "./asset/img/murid/ADE_RAMDANI.webp", role: "Kesenian", color: "violet", number: "13" },
+    { name: "PANI PELISA", img: "./asset/img/murid/PANI_PELISA.webp", role: "Kesenian", color: "violet", number: "14" },
+    { name: "YOGA ADITYA ERLANGGA", img: "./asset/img/murid/YOGA_ADITYA_ERLANGGA.webp", role: "Olahraga", color: "emerald", number: "15" },
+    { name: "FATIH RIZIQ ALFARIZI", img: "./asset/img/murid/FATIH_RIZIQ_ALFARIZI.webp", role: "Olahraga", color: "emerald", number: "16" },
+];
 
-    const classOrgExtra = [
-        { name: "SINTIA SALSABILA", img: "./asset/img/murid/SINTIA_SALSABILA.webp", role: "Bendahara", color: "rose", number: "06" },
-        { name: "RIPA ADITIA RAMADANI", img: "./asset/img/murid/RIPA_ADITIA_RAMADANI.webp", role: "Keamanan", color: "sky", number: "07" },
-        { name: "AGUNG RAHMANUDIN", img: "./asset/img/murid/AGUNG_RAHMANUDIN.webp", role: "Keamanan", color: "sky", number: "08" },
-        { name: "FIKRI", img: "./asset/img/murid/FIKRI.webp", role: "Kebersihan", color: "teal", number: "09" },
-        { name: "NINDY TRIYANTI SOMANTRI", img: "./asset/img/murid/NINDY_TRIYANTI_SOMANTRI.webp", role: "Kebersihan", color: "teal", number: "10" },
-        { name: "NOVITA RIZKI", img: "./asset/img/murid/NOVITA_RIZKI.webp", role: "Kerohanian", color: "orange", number: "11" },
-        { name: "META DWI ALFIANA", img: "./asset/img/murid/META_DWI_ALFIANA.webp", role: "Kerohanian", color: "orange", number: "12" },
-        { name: "ADE RAMDANI", img: "./asset/img/murid/ADE_RAMDANI.webp", role: "Kesenian", color: "violet", number: "13" },
-        { name: "PANI PELISA", img: "./asset/img/murid/PANI_PELISA.webp", role: "Kesenian", color: "violet", number: "14" },
-        { name: "YOGA ADITYA ERLANGGA", img: "./asset/img/murid/YOGA_ADITYA_ERLANGGA.webp", role: "Olahraga", color: "emerald", number: "15" },
-        { name: "FATIH RIZIQ ALFARIZI", img: "./asset/img/murid/FATIH_RIZIQ_ALFARIZI.webp", role: "Olahraga", color: "emerald", number: "16" }
-    ];
+// 1. Kelompokkan data berdasarkan Role
+const grouped = {};
+classStructure.forEach(person => {
+    const key = person.role.toLowerCase();
+    if (!grouped[key]) grouped[key] = [];
+    grouped[key].push(person);
+});
 
-    const studentsAll = [
-        { name: "ABDUL KARIM", img: "./asset/img/murid/ABDUL_KARIM.webp", number: "01" },
-        { name: "ADE RAMDANI", img: "./asset/img/murid/ADE_RAMDANI.webp", number: "02" },
-        { name: "ADIF ENDRIAN", img: "./asset/img/murid/ADIF_ENDRIAN.webp", number: "03" },
-        { name: "AGUNG RAHMANUDIN", img: "./asset/img/murid/AGUNG_RAHMANUDIN.webp", number: "04" },
-        { name: "ALDI SAEFUL NIZAR", img: "./asset/img/murid/ALDI_SAEFUL_NIZAR.webp", number: "05" },
-        { name: "ANI YULIANI", img: "./asset/img/murid/ANI_YULIANI.webp", number: "06" },
-        { name: "ARIE WIRAWAN", img: "./asset/img/murid/ARIE_WIRAWAN.webp", number: "07" },
-        { name: "DUDU BADRUJAMAN", img: "./asset/img/murid/DUDU_BADRUJAMAN.webp", number: "08" },
-        { name: "EVAN PURNAMALILA KOSASIH", img: "./asset/img/murid/EVAN_PURNAMALILA_KOSASIH.webp", number: "09" },
-        { name: "FATIH RIZIQ ALFARIZI", img: "./asset/img/murid/FATIH_RIZIQ_ALFARIZI.webp", number: "10" },
-        { name: "FIKRI", img: "./asset/img/murid/FIKRI.webp", number: "11" },
-        { name: "KAILA AZAHRA", img: "./asset/img/murid/KAILA_AZAHRA.webp", number: "12" },
-        { name: "M. RAHADIAN BAISUNI", img: "./asset/img/murid/M_RAHADIAN_BAISUNI.webp", number: "13" },
-        { name: "MAYA", img: "./asset/img/murid/MAYA.webp", number: "14" },
-        { name: "META DWI ALFIANA", img: "./asset/img/murid/META_DWI_ALFIANA.webp", number: "15" },
-        { name: "MOCH FAHMI", img: "./asset/img/murid/MOCH_FAHMI.webp", number: "16" },
-        { name: "MUHAMAD ADI", img: "./asset/img/murid/MUHAMAD_ADI.webp", number: "17" },
-        { name: "MUHAMMAD AL FARIDZY", img: "./asset/img/murid/MUHAMMAD_AL_FARIDZY.webp", number: "18" },
-        { name: "NANI NURONIAH", img: "./asset/img/murid/NANI_NURONIAH.webp", number: "19" },
-        { name: "NAZWA AULIA RULYIANTI", img: "./asset/img/murid/NAZWA_AULIA_RULYIANTI.webp", number: "20" },
-        { name: "NINDY TRIYANTI SOMANTRI", img: "./asset/img/murid/NINDY_TRIYANTI_SOMANTRI.webp", number: "21" },
-        { name: "NOVITA RIZKI", img: "./asset/img/murid/NOVITA_RIZKI.webp", number: "22" },
-        { name: "PANI PELISA", img: "./asset/img/murid/PANI_PELISA.webp", number: "23" },
-        { name: "PERA HERAWATI", img: "./asset/img/murid/PERA_HERAWATI.webp", number: "24" },
-        { name: "RAKA SYAPUTRA PRATAMA", img: "./asset/img/murid/RAKA_SYAPUTRA_PRATAMA.webp", number: "25" },
-        { name: "REYGA AGUNG PRATAMA", img: "./asset/img/murid/REYGA_AGUNG_PRATAMA.webp", number: "26" },
-        { name: "RIPA ADITIA RAMADANI", img: "./asset/img/murid/RIPA_ADITIA_RAMADANI.webp", number: "27" },
-        { name: "RIZKI ANDIKA ADITIA", img: "./asset/img/murid/RIZKI_ANDIKA_ADITIA.webp", number: "28" },
-        { name: "SHEREN HUMAIROH", img: "./asset/img/murid/SHEREN_HUMAIROH.webp", number: "29" },
-        { name: "SINTIA SALSABILA", img: "./asset/img/murid/SINTIA_SALSABILA.webp", number: "30" },
-        { name: "YOGA ADITYA ERLANGGA", img: "./asset/img/murid/YOGA_ADITYA_ERLANGGA.webp", number: "31" }
-    ];
+// 2. Fungsi pembuat Kartu
+const createCard = (person) => `
+        <div class="org-card border-${person.color}">
+            <img src="${person.img}" alt="${person.name}" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=random'">
+            <h3>${person.name}</h3>
+            <p>${person.role}</p>
+        </div>
+    `;
 
-    // =============================================
-    // TRANSLATIONS
-    // =============================================
+// 3. Fungsi pembuat Level
+const createLevel = (roleKey, isTop = false) => {
+    const people = grouped[roleKey];
+    if (!people) return '';
 
-    const t = {
-        id: {
-            nav_about: 'Tentang', nav_structure: 'Struktur', nav_members: 'Anggota', nav_stats: 'Data', nav_gallery: 'Galeri', nav_contact: 'Kontak',
-            hero_sub: 'Pengembangan Perangkat Lunak & Gim',
-            hero_title_static: 'Kelas ', hero_title_type: 'XI PPLG 2',
-            hero_desc: 'Membangun masa depan digital melalui kode, kolaborasi, dan disiplin.',
-            hero_btn1: 'Kenali Kami', hero_btn2: 'Struktur Kelas',
-            about_label: 'Tentang Kami', about_title: 'Lebih dari sekadar kelas',
-            about_p1: 'XI PPLG 2 adalah kelas konsentrasi Pengembangan Perangkat Lunak dan Gim. Kami tidak hanya belajar menulis kode — kami belajar berpikir sistematis, bekerja dalam tim, dan memecahkan masalah nyata.',
-            about_p2: 'Setiap siswa dibekali kemampuan di bidang pemrograman web, basis data, desain antarmuka, dan pengembangan aplikasi melalui praktik langsung.',
-            struct_label: 'Struktur Kelas', struct_title: 'Pengurus Kelas',
-            struct_desc: 'Mereka yang bertanggung jawab menjalankan roda organisasi kelas.',
-            role_ketua: 'Ketua Kelas', role_wakil: 'Wakil Ketua', role_sekre: 'Sekretaris', role_benda: 'Bendahara',
-            role_Keamanan: 'Keamanan', role_Kebersihan: 'Kebersihan', role_Kerohanian: 'Kerohanian',
-            role_Kesenian: 'Kesenian', role_Olahraga: 'Olahraga',
-            members_label: 'Anggota Kelas', members_title: 'Seluruh Siswa XI PPLG 2',
-            members_desc: '31 siswa yang bersatu membangun masa depan digital.',
-            stats_label: 'Data Kelas', stats_title: 'Dalam Angka',
-            stat_total: 'Total Siswa', stat_male: 'Laki-laki', stat_female: 'Perempuan', stat_project: 'Proyek Selesai',
-            gal_label: 'Galeri Kenangan', gal_title: 'Momen Berharga Kami',
-            gal_desc: 'Kumpulan foto kegiatan, proyek, dan momen kebersamaan kelas XI PPLG 2.',
-            contact_label: 'Kontak', contact_title: 'Hubungi Kami',
-            contact_desc: 'Ada pertanyaan atau ingin berkolaborasi? Kirim pesan melalui form di bawah.',
-            form_name: 'Nama', form_class: 'Kelas', form_subject: 'Subjek', form_message: 'Pesan', form_submit: 'Kirim Pesan',
-            btn_show_all: 'Tampilkan Semua', btn_hide: 'Sembunyikan',
-            toast_msg: 'Pesan berhasil dikirim.',
-            footer_rights: 'Semua hak dilindungi.', footer_made: 'Dibuat dengan dedikasi',
-        },
-        en: {
-            nav_about: 'About', nav_structure: 'Structure', nav_members: 'Members', nav_stats: 'Data', nav_gallery: 'Gallery', nav_contact: 'Contact',
-            hero_sub: 'Software & Game Development',
-            hero_title_static: 'Class ', hero_title_type: 'XI PPLG 2',
-            hero_desc: 'Building the digital future through code, collaboration, and discipline.',
-            hero_btn1: 'Get to Know Us', hero_btn2: 'Class Structure',
-            about_label: 'About Us', about_title: 'More than just a class',
-            about_p1: "XI PPLG 2 is a Software and Game Development concentration class. We don't just learn to write code — we learn to think systematically, work in teams, and solve real problems.",
-            about_p2: 'Every student is equipped with skills in web programming, databases, interface design, and application development through hands-on practice.',
-            struct_label: 'Class Structure', struct_title: 'Class Officers',
-            struct_desc: 'Those responsible for running the class organization.',
-            role_ketua: 'Class President', role_wakil: 'Vice President', role_sekre: 'Secretary', role_benda: 'Treasurer',
-            role_Keamanan: 'Security', role_Kebersihan: 'Hygiene', role_Kerohanian: 'Spiritual',
-            role_Kesenian: 'Arts', role_Olahraga: 'Sports',
-            members_label: 'Class Members', members_title: 'All Students of XI PPLG 2',
-            members_desc: '31 students united to build a digital future.',
-            stats_label: 'Class Data', stats_title: 'In Numbers',
-            stat_total: 'Total Students', stat_male: 'Male', stat_female: 'Female', stat_project: 'Projects Done',
-            gal_label: 'Memory Gallery', gal_title: 'Our Precious Moments',
-            gal_desc: 'A collection of photos from activities, projects, and togetherness of class XI PPLG 2.',
-            contact_label: 'Contact', contact_title: 'Reach Us',
-            contact_desc: 'Have questions or want to collaborate? Send a message through the form below.',
-            form_name: 'Name', form_class: 'Class', form_subject: 'Subject', form_message: 'Message', form_submit: 'Send Message',
-            btn_show_all: 'Show All', btn_hide: 'Hide',
-            toast_msg: 'Message sent successfully.',
-            footer_rights: 'All rights reserved.', footer_made: 'Made with dedication',
+    let levelClass = isTop ? 'level-top' : '';
+    let connectorH = '';
+
+    // Hitung lebar garis horizontal (disesuaikan dengan jumlah anggota)
+    if (!isTop && people.length > 1) {
+        const widthCalc = `calc(${people.length * 140}px + ${(people.length - 1) * 24}px - 140px)`;
+        connectorH = `<div class="connector-h" style="width: ${widthCalc};"></div>`;
+    } else if (!isTop && people.length === 1) {
+        // Jika hanya 1 orang di level bawah, tidak perlu garis horizontal
+        connectorH = '';
+    }
+
+    return `
+            <div class="connector-v"></div>
+            <div class="org-level ${levelClass}">
+                ${connectorH}
+                ${people.map(p => createCard(p)).join('')}
+            </div>
+        `;
+};
+
+// 4. Render Semuanya (legacy)
+// NOTE: index.html tidak memiliki elemen #org-container,
+// jadi blok ini harus aman agar tidak mematikan script.
+const container = document.getElementById('org-container');
+if (container) {
+    container.innerHTML = `
+            <!-- Level 1: Wali Kelas -->
+            ${createLevel('wali kelas', true)}
+            
+            <!-- Level 2: Inti (Sekertaris & Bendahara) -->
+            ${createLevel('sekertaris')}
+            ${createLevel('bendahara')}
+            
+            <!-- Level 3: Sie-Sie -->
+            ${createLevel('keamanan')}
+            ${createLevel('kebersihan')}
+            ${createLevel('kerohanian')}
+            ${createLevel('kesenian')}
+            ${createLevel('olahraga')}
+        `;
+}
+
+
+const studentsAll = [
+    { name: "ABDUL KARIM", img: "./asset/img/murid/ABDUL_KARIM.webp", number: "01" },
+    { name: "ADE RAMDANI", img: "./asset/img/murid/ADE_RAMDANI.webp", number: "02" },
+    { name: "ADIF ENDRIAN", img: "./asset/img/murid/ADIF_ENDRIAN.webp", number: "03" },
+    { name: "AGUNG RAHMANUDIN", img: "./asset/img/murid/AGUNG_RAHMANUDIN.webp", number: "04" },
+    { name: "ALDI SAEFUL NIZAR", img: "./asset/img/murid/ALDI_SAEFUL_NIZAR.webp", number: "05" },
+    { name: "ANI YULIANI", img: "./asset/img/murid/ANI_YULIANI.webp", number: "06" },
+    { name: "ARIE WIRAWAN", img: "./asset/img/murid/ARIE_WIRAWAN.webp", number: "07" },
+    { name: "DUDU BADRUJAMAN", img: "./asset/img/murid/DUDU_BADRUJAMAN.webp", number: "08" },
+    { name: "EVAN PURNAMALILA KOSASIH", img: "./asset/img/murid/EVAN_PURNAMALILA_KOSASIH.webp", number: "09" },
+    { name: "FATIH RIZIQ ALFARIZI", img: "./asset/img/murid/FATIH_RIZIQ_ALFARIZI.webp", number: "10" },
+    { name: "FIKRI", img: "./asset/img/murid/FIKRI.webp", number: "11" },
+    { name: "KAILA AZAHRA", img: "./asset/img/murid/KAILA_AZAHRA.webp", number: "12" },
+    { name: "M. RAHADIAN BAISUNI", img: "./asset/img/murid/M_RAHADIAN_BAISUNI.webp", number: "13" },
+    { name: "MAYA", img: "./asset/img/murid/MAYA.webp", number: "14" },
+    { name: "META DWI ALFIANA", img: "./asset/img/murid/META_DWI_ALFIANA.webp", number: "15" },
+    { name: "MOCH FAHMI", img: "./asset/img/murid/MOCH_FAHMI.webp", number: "16" },
+    { name: "MUHAMAD ADI", img: "./asset/img/murid/MUHAMAD_ADI.webp", number: "17" },
+    { name: "MUHAMMAD AL FARIDZY", img: "./asset/img/murid/MUHAMMAD_AL_FARIDZY.webp", number: "18" },
+    { name: "NANI NURONIAH", img: "./asset/img/murid/NANI_NURONIAH.webp", number: "19" },
+    { name: "NAZWA AULIA RULYIANTI", img: "./asset/img/murid/NAZWA_AULIA_RULYIANTI.webp", number: "20" },
+    { name: "NINDY TRIYANTI SOMANTRI", img: "./asset/img/murid/NINDY_TRIYANTI_SOMANTRI.webp", number: "21" },
+    { name: "NOVITA RIZKI", img: "./asset/img/murid/NOVITA_RIZKI.webp", number: "22" },
+    { name: "PANI PELISA", img: "./asset/img/murid/PANI_PELISA.webp", number: "23" },
+    { name: "PERA HERAWATI", img: "./asset/img/murid/PERA_HERAWATI.webp", number: "24" },
+    { name: "RAKA SYAPUTRA PRATAMA", img: "./asset/img/murid/RAKA_SYAPUTRA_PRATAMA.webp", number: "25" },
+    { name: "REYGA AGUNG PRATAMA", img: "./asset/img/murid/REYGA_AGUNG_PRATAMA.webp", number: "26" },
+    { name: "RIPA ADITIA RAMADANI", img: "./asset/img/murid/RIPA_ADITIA_RAMADANI.webp", number: "27" },
+    { name: "RIZKI ANDIKA ADITIA", img: "./asset/img/murid/RIZKI_ANDIKA_ADITIA.webp", number: "28" },
+    { name: "SHEREN HUMAIROH", img: "./asset/img/murid/SHEREN_HUMAIROH.webp", number: "29" },
+    { name: "SINTIA SALSABILA", img: "./asset/img/murid/SINTIA_SALSABILA.webp", number: "30" },
+    { name: "YOGA ADITYA ERLANGGA", img: "./asset/img/murid/YOGA_ADITYA_ERLANGGA.webp", number: "31" },
+];
+
+const projects = [
+    { name: "E-Learning Platform", tech: ["Laravel", "Vue"], desc: "Platform pembelajaran daring untuk siswa SMK", img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80" },
+    { name: "Inventory System", tech: ["React", "Node"], desc: "Sistem inventaris barang sekolah", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" },
+    { name: "Game Edukasi", tech: ["Unity", "C#"], desc: "Game adventure edukasi sejarah indonesia", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&q=80" }
+];
+
+// =============================================
+// 2. TRANSLATIONS
+// =============================================
+const translations = {
+    id: {
+        nav_students: "Students", nav_portfolio: "Portfolio", nav_project: "Project", nav_contact: "Contact",
+        hero_major: "Pengembangan Perangkat Lunak dan Gim",
+        hero_desc: "Kelas yang inovatif, kolaboratif, dan berprestasi di bidang teknologi informasi.",
+        hero_btn_explore: "Jelajahi Kelas", hero_btn_contact: "Hubungi Kami",
+        hero_stat_students: "Siswa", hero_stat_org: "Pengurus", hero_stat_act: "Aktivitas", hero_stat_achieve: "Prestasi",
+        hero_typing: ["Kode Masa Depan", "Inovasi Tanpa Batas", "Bersatu dalam Teknologi"],
+        about_title: "Tentang Kelas", about_subtitle: "Mengenal lebih dekat kelas XII PPLG",
+        about_visi: "Visi", about_visi_text: "Menjadi kelas yang unggul dalam kompetisi, erat dalam kebersamaan, dan cekatan dalam berkarya teknologi.",
+        about_misi: "Misi", about_misi_text: "Membangun budaya belajar yang efektif, mengembangkan bakat setiap siswa, dan mewujudkan project nyata yang bermanfaat.",
+        about_nilai: "Nilai Kelas", about_nilai_text: "Integritas, Inovasi, Kolaborasi, dan Kerja Keras menjadi fondasi utama kami dalam berkarya.",
+        port_title: "Galeri", proj_title: "Project Kami", contact_title: "Hubungi Kami",
+        contact_name: "Nama", contact_email: "Email", contact_msg: "Pesan", contact_btn: "Kirim Pesan",
+        footer_desc: "Kelas unggulan yang berfokus pada pengembangan perangkat lunak dan gim di SMK.",
+        footer_contact: "Hubungi Kami",
+        alert_success: "Pesan Berhasil Dikirim", alert_msg: "Terima kasih telah menghubungi kami!",
+        search_placeholder: "Cari nama siswa...", filter_all: "Semua Absen",
+        members_label: "Anggota Kelas", members_title: "Seluruh Siswa XII PPLG",
+        members_desc: "31 siswa yang bersatu membangun masa depan digital.",
+        members_search: "Cari nama siswa...", members_filter_all: "Semua Absen",
+        members_empty: "Siswa tidak ditemukan", btn_show_all: "Tampilkan Semua", btn_show_less: "Tampilkan Sedikit"
+    },
+    en: {
+        nav_students: "Students", nav_portfolio: "Portfolio", nav_project: "Project", nav_contact: "Contact",
+        hero_major: "Software and Game Development",
+        hero_desc: "An innovative, collaborative, and accomplished class in information technology.",
+        hero_btn_explore: "Explore Class", hero_btn_contact: "Contact Us",
+        hero_stat_students: "Students", hero_stat_org: "Org Members", hero_stat_act: "Activities", hero_stat_achieve: "Achievements",
+        hero_typing: ["Coding the Future", "Endless Innovation", "United in Technology"],
+        about_title: "About Class", about_subtitle: "Getting to know class XII PPLG",
+        about_visi: "Vision", about_visi_text: "To be a class excelling in competition, close in togetherness, and adept at creating technology.",
+        about_misi: "Mission", about_misi_text: "Building an effective learning culture, developing every student's talent, and realizing useful real projects.",
+        about_nilai: "Class Values", about_nilai_text: "Integrity, Innovation, Collaboration, and Hard Work are our main foundations in creating.",
+        port_title: "Gallery", proj_title: "Our Projects", contact_title: "Contact Us",
+        contact_name: "Name", contact_email: "Email", contact_msg: "Message", contact_btn: "Send Message",
+        footer_desc: "An outstanding class focused on software and game development at Vocational High School.",
+        footer_contact: "Contact Us",
+        alert_success: "Message Sent Successfully", alert_msg: "Thank you for contacting us!",
+        search_placeholder: "Search student name...", filter_all: "All Numbers",
+        members_label: "Class Members", members_title: "All Students XII PPLG",
+        members_desc: "31 students united to build the digital future.",
+        members_search: "Search student name...", members_filter_all: "All Numbers",
+        members_empty: "Student not found", btn_show_all: "Show All", btn_show_less: "Show Less"
+    }
+};
+
+
+// =============================================
+// 3. STATE & INITIALIZATION
+// =============================================
+
+
+let currentLang = localStorage.getItem('lang') || 'id';
+let isDark = localStorage.getItem('dark') === 'true';
+let currentModalIndex = -1;
+let filteredPins = [...pinData];
+const INITIAL_DISPLAY_COUNT = 10;
+
+document.documentElement.classList.toggle('dark', isDark);
+
+window.onload = () => {
+    setTimeout(() => {
+        document.getElementById('loader').style.opacity = '0';
+        setTimeout(() => document.getElementById('loader').style.display = 'none', 500);
+    }, 1000);
+
+    AOS.init({ once: true, duration: 800 });
+    setLanguage(currentLang);
+    initTyping();
+    initCounters();
+    renderStructure();
+    initMembers();
+    renderGallery('all');
+    renderProjects();
+    initFAQ();
+    initListeners();
+};
+
+// =============================================
+// 4. CORE FUNCTIONS
+// =============================================
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.getElementById('lang-toggle').innerText = lang === 'id' ? 'EN' : 'ID';
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+            el.innerText = translations[lang][key];
         }
+    });
+
+    const memberSearch = document.getElementById('member-search');
+    if (memberSearch) memberSearch.placeholder = translations[lang].members_search;
+
+    const toggleBtn = document.getElementById('membersToggle');
+    if (toggleBtn && toggleBtn.getAttribute('data-open') === 'false') {
+        toggleBtn.innerText = translations[lang].btn_show_all;
+    } else if (toggleBtn && toggleBtn.getAttribute('data-open') === 'true') {
+        toggleBtn.innerText = translations[lang].btn_show_less;
+    }
+}
+
+function initTyping() {
+    const el = document.getElementById('typing-text');
+    const texts = translations[currentLang].hero_typing;
+    let textIdx = 0, charIdx = 0, isDeleting = false;
+
+    function type() {
+        const currentText = texts[textIdx];
+        el.textContent = currentText.substring(0, charIdx);
+
+        if (!isDeleting && charIdx < currentText.length) {
+            charIdx++; setTimeout(type, 100);
+        } else if (!isDeleting && charIdx === currentText.length) {
+            isDeleting = true; setTimeout(type, 2000);
+        } else if (isDeleting && charIdx > 0) {
+            charIdx--; setTimeout(type, 50);
+        } else {
+            isDeleting = false; textIdx = (textIdx + 1) % texts.length; setTimeout(type, 500);
+        }
+    }
+    type();
+}
+
+function initCounters() {
+    const counters = document.querySelectorAll('.counter');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = +el.getAttribute('data-target');
+                let count = 0;
+                const updateCount = () => {
+                    const increment = target / 60;
+                    if (count < target) {
+                        count += increment; el.innerText = Math.ceil(count); requestAnimationFrame(updateCount);
+                    } else el.innerText = target + '+';
+                };
+                updateCount();
+                observer.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(c => observer.observe(c));
+}
+
+// =============================================
+// 5. RENDER LAYOUTS
+// =============================================
+function renderStructure() {
+    const container = document.getElementById('org-container');
+    if (!container) return;
+
+    // 1) Kelompokkan data berdasarkan role
+    const grouped = {};
+    classStructure.forEach(person => {
+        const key = person.role.toLowerCase();
+        if (!grouped[key]) grouped[key] = [];
+        grouped[key].push(person);
+    });
+
+    // 2) Kartu anggota
+    const createCard = (person) => `
+        <div class="org-card border-${person.color}">
+            <img src="${person.img}" alt="${person.name}" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=random'">
+            <h3>${person.name}</h3>
+            <p>${person.role}</p>
+        </div>
+    `;
+
+    // 3) Level
+    const createLevel = (roleKey, isTop = false) => {
+        const people = grouped[roleKey];
+        if (!people) return '';
+
+        const levelClass = isTop ? 'level-top' : '';
+        let connectorH = '';
+
+        if (!isTop && people.length > 1) {
+            const widthCalc = `calc(${people.length * 140}px + ${(people.length - 1) * 24}px - 140px)`;
+            connectorH = `<div class="connector-h" style="width: ${widthCalc};"></div>`;
+        }
+
+        return `
+            <div class="connector-v"></div>
+            <div class="org-level ${levelClass}">
+                ${connectorH}
+                ${people.map(p => createCard(p)).join('')}
+            </div>
+        `;
     };
 
-    // =============================================
-    // STATE
-    // =============================================
+    // 4) Render semuanya
+    container.innerHTML = `
+        <!-- Level 1: Wali Kelas -->
+        ${createLevel('wali kelas', true)}
 
-    let currentLang = 'id';
-    let currentFilter = 'semua';
-    let searchQuery = '';
-    let filteredPins = [...pinData];
-    let likedPins = new Set();
-    let savedPins = new Set();
-    let currentLightboxIndex = -1;
-    let lightboxMode = 'photo'; // 'photo' = single image, 'gallery' = gallery navigation
+        <!-- Level 2: Inti (Sekertaris & Bendahara) -->
+        ${createLevel('sekertaris')}
+        ${createLevel('bendahara')}
 
-    // =============================================
-    // DOM REFERENCES
-    // =============================================
+        <!-- Level 3: Sie-Sie -->
+        ${createLevel('keamanan')}
+        ${createLevel('kebersihan')}
+        ${createLevel('kerohanian')}
+        ${createLevel('kesenian')}
+        ${createLevel('olahraga')}
+    `;
+}
 
-    const $ = (sel) => document.querySelector(sel);
-    const $$ = (sel) => document.querySelectorAll(sel);
 
-    const masonryGrid = $('#masonryGrid');
-    const filterBar = $('#filterBar');
-    const gallerySearch = $('#gallerySearch');
-    const galleryLoading = $('#galleryLoading');
-    const noResults = $('#noResults');
-    const lightboxEl = $('#lightbox');
-    const lightboxImg = $('#lightboxImg');
-    const lightboxTitle = $('#lightboxTitle');
-    const lightboxMeta = $('#lightboxMeta');
-    const lightboxInfoWrap = $('#lightboxInfoWrap');
-    const lightboxCloseBtn = $('.lightbox-close');
-    const lightboxPrevBtn = $('#lightboxPrev');
-    const lightboxNextBtn = $('#lightboxNext');
-    const scrollTopBtn = $('#scrollTop');
-    const toastContainer = $('#toastContainer');
-    const navbar = $('#navbar');
+function renderMembers(filter = 'all', search = '') {
+    const visibleGrid = document.getElementById('membersVisible');
+    const hiddenGrid = document.getElementById('membersHidden');
 
-    // =============================================
-    // UTILITY
-    // =============================================
+    let data = [...studentsAll];
 
-    function formatNumber(n) {
-        return n >= 1000 ? Math.floor(n / 1000) + 'k' : n.toString();
+    if (filter !== 'all') data = data.filter(s => s.number === filter);
+    if (search) data = data.filter(s => s.name.toLowerCase().includes(search.toLowerCase()));
+
+    const cardHTML = (s) => `
+        <div class="group relative aspect-[4/5] overflow-hidden cursor-pointer"
+             onclick="openMemberModal('${s.name}', '${s.img}', '${s.number}')">
+
+            <img src="${s.img}" alt="${s.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+            <div class="absolute bottom-0 left-0 right-0 p-3 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h4 class="font-bold text-[11px] md:text-xs text-white truncate">${s.name}</h4>
+                <p class="text-[9px] md:text-[10px] text-accent font-medium mt-0.5">No. ${s.number}</p>
+            </div>
+        </div>
+    `;
+
+    visibleGrid.innerHTML = '';
+    hiddenGrid.innerHTML = '';
+    hiddenGrid.classList.add('hidden');
+
+    const toggleBtn = document.getElementById('membersToggle');
+    toggleBtn.setAttribute('data-open', 'false');
+    toggleBtn.innerText = translations[currentLang].btn_show_all || 'Tampilkan Semua';
+
+    if (data.length === 0) {
+        visibleGrid.innerHTML = `<div class="col-span-full text-center text-soft dark:text-gray-400 py-10">${translations[currentLang].members_empty}</div>`;
+        toggleBtn.classList.add('hidden');
+        return;
     }
 
-    function showToast(message, duration) {
-        duration = duration || 3000;
-        var toast = document.createElement('div');
-        toast.className = 'toast animate-slideIn';
-        toast.textContent = message;
-        toastContainer.appendChild(toast);
-        setTimeout(function () {
-            toast.classList.add('exit');
-            setTimeout(function () { toast.remove(); }, 300);
-        }, duration);
-    }
-
-    // =============================================
-    // LIGHTBOX (Unified)
-    // =============================================
-
-    function openLightbox() {
-        lightboxEl.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        document.documentElement.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-        lightboxEl.classList.add('hidden');
-        document.body.style.overflow = '';
-        document.documentElement.style.overflow = '';
-        currentLightboxIndex = -1;
-        lightboxMode = 'photo';
-    }
-
-    // Mode 1: Foto tunggal (anggota / struktur)
-    function openPhotoLightbox(src) {
-        lightboxMode = 'photo';
-        currentLightboxIndex = -1;
-        lightboxImg.src = src;
-        lightboxTitle.textContent = '';
-        lightboxMeta.textContent = '';
-        lightboxInfoWrap.style.display = 'none';
-        lightboxPrevBtn.classList.add('hidden');
-        lightboxNextBtn.classList.add('hidden');
-        openLightbox();
-    }
-
-    // Mode 2: Gallery Pinterest (dengan navigasi)
-    function openGalleryLightbox(index) {
-        lightboxMode = 'gallery';
-        currentLightboxIndex = index;
-        var pin = filteredPins[index];
-        if (!pin) return;
-        lightboxImg.src = pin.img;
-        lightboxImg.alt = pin.title;
-        lightboxTitle.textContent = pin.title;
-        lightboxMeta.textContent = '@' + pin.user + ' \u00B7 ' + formatNumber(pin.likes + (likedPins.has(pin.id) ? 1 : 0)) + ' suka \u00B7 ' + pin.category;
-        lightboxInfoWrap.style.display = '';
-        lightboxPrevBtn.classList.remove('hidden');
-        lightboxNextBtn.classList.remove('hidden');
-        openLightbox();
-    }
-
-    function navigateLightbox(dir) {
-        if (currentLightboxIndex < 0 || lightboxMode !== 'gallery') return;
-        var len = filteredPins.length;
-        var newIndex = (currentLightboxIndex + dir + len) % len;
-        openGalleryLightbox(newIndex);
-    }
-
-    // Lightbox events
-    lightboxCloseBtn.addEventListener('click', function (e) { e.stopPropagation(); closeLightbox(); });
-    lightboxPrevBtn.addEventListener('click', function (e) { e.stopPropagation(); navigateLightbox(-1); });
-    lightboxNextBtn.addEventListener('click', function (e) { e.stopPropagation(); navigateLightbox(1); });
-    lightboxEl.addEventListener('click', function (e) { if (e.target === lightboxEl) closeLightbox(); });
-    document.addEventListener('keydown', function (e) {
-        if (lightboxEl.classList.contains('hidden')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft') navigateLightbox(-1);
-        if (e.key === 'ArrowRight') navigateLightbox(1);
-    });
-
-    // =============================================
-    // GALLERY: PINTEREST
-    // =============================================
-
-    function renderSkeletons(count) {
-        count = count || 12;
-        var html = '';
-        for (var i = 0; i < count; i++) {
-            var h = 250 + Math.random() * 250;
-            html += '<div class="skeleton"><div class="skeleton-img" style="height:' + h + 'px"></div></div>';
-        }
-        masonryGrid.innerHTML = html;
-        galleryLoading.classList.remove('hidden');
-        noResults.classList.add('hidden');
-    }
-
-    function renderPins(pins) {
-        galleryLoading.classList.add('hidden');
-
-        if (pins.length === 0) {
-            masonryGrid.innerHTML = '';
-            noResults.classList.remove('hidden');
-            return;
-        }
-
-        noResults.classList.add('hidden');
-
-        masonryGrid.innerHTML = pins.map(function (pin, index) {
-            var isLiked = likedPins.has(pin.id);
-            var isSaved = savedPins.has(pin.id);
-            var avatarSeed = pin.user.replace(/[^a-z]/g, '');
-            var heartFill = isLiked ? 'currentColor' : 'none';
-            var heartClass = isLiked ? 'liked' : '';
-
-            return '<div class="pin-card" data-index="' + index + '" tabindex="0" role="listitem">' +
-                '<img src="' + pin.img + '" alt="' + pin.title + '" loading="lazy">' +
-                '<button class="save-btn ' + (isSaved ? 'saved' : '') + '" data-id="' + pin.id + '">' + (isSaved ? 'Tersimpan' : 'Simpan') + '</button>' +
-                '<div class="pin-overlay">' +
-                '<div class="pin-overlay-top">' +
-                '<button class="pin-action-btn" data-action="share" aria-label="Bagikan">' +
-                '<i class="fa-solid fa-arrow-up-from-bracket" style="font-size:13px"></i>' +
-                '</button>' +
-                '<button class="pin-action-btn ' + heartClass + '" data-action="like" data-id="' + pin.id + '" aria-label="Suka">' +
-                '<i class="fa-' + (isLiked ? 'solid' : 'regular') + ' fa-heart" style="font-size:13px"></i>' +
-                '</button>' +
-                '</div>' +
-                '<div class="pin-overlay-bottom">' +
-                '<img class="pin-avatar" src="https://picsum.photos/seed/' + avatarSeed + '/64/64.jpg" alt="' + pin.user + '" loading="lazy">' +
-                '<span class="pin-username">@' + pin.user + '</span>' +
-                '</div>' +
-                '</div>' +
-                '<div class="pin-info">' +
-                '<div class="pin-title">' + pin.title + '</div>' +
-                '<div class="pin-meta">' +
-                '<span><i class="fa-' + (isLiked ? 'solid' : 'regular') + ' fa-heart" style="font-size:11px"></i> ' + formatNumber(pin.likes + (isLiked ? 1 : 0)) + '</span>' +
-                '<span>' + pin.category + '</span>' +
-                '</div>' +
-                '</div>' +
-                '</div>';
-        }).join('');
-
-        setupPinEvents();
-        observePins();
-    }
-
-    function applyFilters() {
-        filteredPins = pinData.filter(function (pin) {
-            var matchCat = currentFilter === 'semua' || pin.category === currentFilter;
-            var matchSearch = !searchQuery ||
-                pin.title.toLowerCase().indexOf(searchQuery) !== -1 ||
-                pin.user.toLowerCase().indexOf(searchQuery) !== -1 ||
-                pin.category.toLowerCase().indexOf(searchQuery) !== -1;
-            return matchCat && matchSearch;
-        });
-        renderPins(filteredPins);
-    }
-
-    function setupPinEvents() {
-        masonryGrid.querySelectorAll('.pin-card').forEach(function (card, index) {
-            // Klik gambar → gallery lightbox
-            card.addEventListener('click', function (e) {
-                if (e.target.closest('.save-btn') || e.target.closest('.pin-action-btn')) return;
-                openGalleryLightbox(index);
-            });
-
-            // Simpan
-            var saveBtn = card.querySelector('.save-btn');
-            if (saveBtn) saveBtn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                toggleSave(parseInt(saveBtn.dataset.id));
-            });
-
-            // Like
-            var likeBtn = card.querySelector('[data-action="like"]');
-            if (likeBtn) likeBtn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                toggleLike(parseInt(likeBtn.dataset.id));
-            });
-
-            // Share
-            var shareBtn = card.querySelector('[data-action="share"]');
-            if (shareBtn) shareBtn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(window.location.href).then(function () {
-                        showToast('Link berhasil disalin!');
-                    });
-                } else {
-                    showToast('Link berhasil disalin!');
-                }
-            });
-        });
-    }
-
-    function toggleLike(id) {
-        if (likedPins.has(id)) {
-            likedPins.delete(id);
-            showToast('Batal menyukai');
-        } else {
-            likedPins.add(id);
-            showToast('Disukai!');
-        }
-        applyFilters();
-    }
-
-    function toggleSave(id) {
-        if (savedPins.has(id)) {
-            savedPins.delete(id);
-            showToast('Dihapus dari simpanan');
-        } else {
-            savedPins.add(id);
-            showToast('Disimpan!');
-        }
-        applyFilters();
-    }
-
-    function observePins() {
-        var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px 50px 0px' });
-        masonryGrid.querySelectorAll('.pin-card:not(.revealed)').forEach(function (pin) {
-            observer.observe(pin);
-        });
-    }
-
-    // Filter pills
-    filterBar.addEventListener('click', function (e) {
-        var pill = e.target.closest('.filter-pill');
-        if (!pill) return;
-        filterBar.querySelectorAll('.filter-pill').forEach(function (p) {
-            p.classList.remove('active', 'bg-blue-500/20', 'text-blue-300', 'border-blue-500/30');
-            p.classList.add('bg-white/5', 'text-neutral-400', 'border-white/10');
-        });
-        pill.classList.add('active', 'bg-blue-500/20', 'text-blue-300', 'border-blue-500/30');
-        pill.classList.remove('bg-white/5', 'text-neutral-400', 'border-white/10');
-        currentFilter = pill.dataset.filter;
-        applyFilters();
-    });
-
-    // Search
-    var searchTimeout;
-    gallerySearch.addEventListener('input', function () {
-        clearTimeout(searchTimeout);
-        searchQuery = gallerySearch.value.toLowerCase().trim();
-        searchTimeout = setTimeout(applyFilters, 300);
-    });
-
-    // =============================================
-    // MEMBERS
-    // =============================================
-
-    function renderMembers() {
-        var visible = $('#membersVisible');
-        var hidden = $('#membersHidden');
-        if (!visible || !hidden) return;
-
-        visible.innerHTML = studentsAll.slice(0, 4).map(function (s, idx) {
-            return '<div class="anggota-card rounded-xl overflow-hidden reveal-on-scroll" style="transition-delay:' + (idx * 0.04) + 's" onclick="openPhotoLightbox(\'' + s.img + '\')">' +
-                '<div class="aspect-[4/5] overflow-hidden">' +
-                '<img src="' + s.img + '" alt="' + s.name + '" class="anggota-img img-cover w-full h-full object-cover" onerror="this.src=\'https://picsum.photos/400/500.jpg\'">' +
-                '</div>' +
-                '<div class="p-4">' +
-                '<p class="anggota-name text-white font-bold text-xs">' + s.name + '</p>' +
-                '<p class="text-neutral-500 text-[0.65rem] mt-0.5">' + s.number + ' anggota</p>' +
-                '</div>' +
-                '</div>';
-        }).join('');
-
-        hidden.innerHTML = '<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-5 pt-5">' +
-            studentsAll.slice(4).map(function (s) {
-                return '<div class="anggota-card rounded-xl overflow-hidden group hover:shadow-lg transition-shadow duration-300" onclick="openPhotoLightbox(\'' + s.img + '\')">' +
-                    '<div class="aspect-[4/5] overflow-hidden">' +
-                    '<img src="' + s.img + '" alt="' + s.name + '" class="anggota-img img-cover w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src=\'https://picsum.photos/400/500.jpg\'">' +
-                    '</div>' +
-                    '<div class="p-4">' +
-                    '<p class="anggota-name text-white font-bold text-xs">' + s.name + '</p>' +
-                    '<p class="text-neutral-500 text-[0.65rem] mt-0.5">' + s.number + ' anggota</p>' +
-                    '</div>' +
-                    '</div>';
-            }).join('') +
-            '</div>';
-
-        hidden.classList.remove('show');
-        var btn = $('#membersToggle');
-        if (btn) { btn.dataset.open = 'false'; btn.textContent = t[currentLang].btn_show_all; }
-    }
-
-    function toggleMembers() {
-        var hidden = $('#membersHidden');
-        var btn = $('#membersToggle');
-        if (!hidden || !btn) return;
-        if (hidden.classList.contains('show')) {
-            hidden.classList.remove('show');
-            btn.dataset.open = 'false';
-            btn.textContent = t[currentLang].btn_show_all;
-        } else {
-            hidden.classList.add('show');
-            btn.dataset.open = 'true';
-            btn.textContent = t[currentLang].btn_hide;
-        }
-    }
-
-    // =============================================
-    // STRUCTURE EXTRA
-    // =============================================
-
-    function renderStructureExtra() {
-        var container = $('#structureExtra');
-        if (!container) return;
-        container.innerHTML = classOrgExtra.map(function (item, i) {
-            var roleKey = 'role_' + item.role;
-            var roleText = t[currentLang][roleKey] || item.role;
-            return '<div class="member-card glass-soft rounded-xl overflow-hidden reveal-on-scroll" style="transition-delay:' + (i * 0.05) + 's" onclick="openPhotoLightbox(\'' + item.img + '\')">' +
-                '<div class="aspect-[4/3]"><img src="' + item.img + '" class="img-cover" onerror="this.src=\'https://picsum.photos/400/300\'"></div>' +
-                '<div class="p-6">' +
-                '<p class="member-name text-white font-bold text-sm">' + item.name + '</p>' +
-                '<p class="text-' + item.color + '-400 text-xs mt-1 font-semibold">' + item.number + ' \u00B7 ' + roleText + '</p>' +
-                '</div>' +
-                '</div>';
-        }).join('');
-    }
-
-    function toggleStructureExtra() {
-        var container = $('#structureExtra');
-        var btn = $('#structureToggle');
-        if (!container || !btn) return;
-        if (container.classList.contains('show')) {
-            container.classList.remove('show');
-            btn.dataset.open = 'false';
-            btn.textContent = t[currentLang].btn_show_all;
-        } else {
-            container.classList.add('show');
-            btn.dataset.open = 'true';
-            btn.textContent = t[currentLang].btn_hide;
-        }
-    }
-
-    // =============================================
-    // LANGUAGE
-    // =============================================
-
-    function setLang(lang) {
-        currentLang = lang;
-
-        // Toggle tombol aktif
-        ['btnID', 'btnEN', 'btnIDm', 'btnENm'].forEach(function (id) {
-            var el = document.getElementById(id);
-            if (!el) return;
-            var isActive = (id === 'btnID' || id === 'btnIDm') ? lang === 'id' : lang === 'en';
-            el.classList.toggle('active', isActive);
-        });
-
-        // Update teks i18n
-        $$('[data-i18n]').forEach(function (el) {
-            var key = el.getAttribute('data-i18n');
-            if (t[lang][key] && el.id !== 'typingText') el.textContent = t[lang][key];
-        });
-        $$('[data-i18n-placeholder]').forEach(function (el) {
-            var key = el.getAttribute('data-i18n-placeholder');
-            if (t[lang][key]) el.placeholder = t[lang][key];
-        });
-
-        // Update toggle buttons
-        ['membersToggle', 'structureToggle'].forEach(function (id) {
-            var btn = document.getElementById(id);
-            if (btn) btn.textContent = btn.dataset.open === 'true' ? t[lang].btn_hide : t[lang].btn_show_all;
-        });
-
-        renderStructureExtra();
-        startTyping(lang);
-        document.documentElement.lang = lang;
-    }
-
-    // =============================================
-    // TYPING EFFECT
-    // =============================================
-
-    function startTyping(lang) {
-        var typingEl = $('#typingText');
-        var cursorEl = $('#typingCursor');
-        if (!typingEl) return;
-
-        if (window._typingTimeout) clearTimeout(window._typingTimeout);
-
-        typingEl.textContent = '';
-        if (cursorEl) cursorEl.style.display = 'inline-block';
-
-        var staticText = t[lang].hero_title_static;
-        var typeText = t[lang].hero_title_type;
-        var i = 0;
-        var phase = 'static';
-
-        function tick() {
-            if (phase === 'static') {
-                if (i < staticText.length) {
-                    typingEl.textContent += staticText[i];
-                    i++;
-                    window._typingTimeout = setTimeout(tick, 50);
-                } else {
-                    phase = 'type';
-                    i = 0;
-                    window._typingTimeout = setTimeout(tick, 200);
-                }
-            } else if (phase === 'type') {
-                if (i < typeText.length) {
-                    typingEl.innerHTML = staticText + '<span class="italic text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">' + typeText.substring(0, i + 1) + '</span>';
-                    i++;
-                    window._typingTimeout = setTimeout(tick, 80);
-                } else {
-                    phase = 'done';
-                }
-            }
-        }
-        tick();
-    }
-
-    // =============================================
-    // SCROLL EFFECTS
-    // =============================================
-
-    // Navbar shadow
-    window.addEventListener('scroll', function () {
-        if (navbar) {
-            if (window.scrollY > 20) {
-                navbar.style.borderBottomColor = 'rgba(255,255,255,0.05)';
-                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
-                navbar.style.background = 'rgba(5,5,5,0.8)';
-            } else {
-                navbar.style.borderBottomColor = 'transparent';
-                navbar.style.boxShadow = 'none';
-                navbar.style.background = 'rgba(5,5,5,0.6)';
-            }
-        }
-
-        // Scroll to top
-        if (window.scrollY > 800) {
-            scrollTopBtn.style.opacity = '1';
-            scrollTopBtn.style.transform = 'translateY(0)';
-        } else {
-            scrollTopBtn.style.opacity = '0';
-            scrollTopBtn.style.transform = 'translateY(1rem)';
-        }
-    }, { passive: true });
-
-    scrollTopBtn.addEventListener('click', function () {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Reveal on scroll
-    var revealObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) entry.target.classList.add('is-visible');
-        });
-    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-
-    $$('.reveal-on-scroll').forEach(function (el) { revealObserver.observe(el); });
-
-    // =============================================
-    // MOBILE MENU
-    // =============================================
-
-    var mobileMenuBtn = $('#mobileMenuBtn');
-    var mobileMenu = $('#mobileMenu');
-    var menuOpen = false;
-
-    if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', function () {
-            menuOpen = !menuOpen;
-            mobileMenu.classList.toggle('hidden', !menuOpen);
-        });
-        $$('.mobile-link').forEach(function (link) {
-            link.addEventListener('click', function () {
-                menuOpen = false;
-                mobileMenu.classList.add('hidden');
-            });
-        });
-    }
-
-    // =============================================
-    // CONTACT FORM
-    // =============================================
-
-    var contactForm = $('#contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            showToast(t[currentLang].toast_msg);
-            contactForm.reset();
-        });
-    }
-
-    // =============================================
-    // INIT
-    // =============================================
-
-    function init() {
-        renderMembers();
-        renderStructureExtra();
-        startTyping('id');
-
-        // Gallery: tampilkan skeleton dulu, lalu render
-        renderSkeletons(12);
-        setTimeout(function () {
-            applyFilters();
-        }, 800);
-    }
-
-    // Expose ke window untuk HTML onclick
-    window.setLang = setLang;
-    window.openPhotoLightbox = openPhotoLightbox;
-    window.closeLightbox = closeLightbox;
-    window.toggleMembers = toggleMembers;
-    window.toggleStructureExtra = toggleStructureExtra;
-
-    // Jalankan setelah DOM siap
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+    if (data.length <= INITIAL_DISPLAY_COUNT) {
+        toggleBtn.classList.add('hidden');
+        visibleGrid.innerHTML = data.map(cardHTML).join('');
     } else {
-        init();
+        toggleBtn.classList.remove('hidden');
+        visibleGrid.innerHTML = data.slice(0, INITIAL_DISPLAY_COUNT).map(cardHTML).join('');
+        hiddenGrid.innerHTML = data.slice(INITIAL_DISPLAY_COUNT).map(cardHTML).join('');
     }
+}
 
-})();
+function renderGallery(filter) {
+    const container = document.getElementById('masonry-container');
+
+    // Deduplikasi data galeri untuk mencegah item tampil ganda
+    const pins = filter === 'all' ? pinData : pinData.filter(p => p.category === filter);
+    const seen = new Set();
+    filteredPins = pins.filter(p => {
+        const key = `${p.img}__${p.title}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+    });
+
+    container.innerHTML = filteredPins.map((p, idx) => `
+        <div class="masonry-item fade-in" onclick="openImageModal(${idx})">
+            <img src="${p.img}" alt="${p.title}" loading="lazy" class="w-full">
+            <div class="masonry-overlay">
+                <i class="fas fa-search-plus text-white text-2xl"></i>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderProjects() {
+    const grid = document.getElementById('project-grid');
+    if (!grid) return;
+
+    grid.innerHTML = projects.map(p => `
+        <div class="bg-white dark:bg-secondary rounded-2xl shadow-lg p-6 hover:shadow-2xl transition" data-aos="fade-up">
+            <div class="h-40 rounded-xl overflow-hidden mb-4">
+                <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover" loading="lazy">
+            </div>
+            <h3 class="text-xl font-bold text-accent mb-2">${p.name}</h3>
+            <p class="text-soft dark:text-gray-300 text-sm mb-4">${p.desc}</p>
+            <div class="flex flex-wrap gap-2">
+                ${p.tech.map(t => `<span class="px-3 py-1 rounded-full bg-soft text-primary text-xs font-semibold">${t}</span>`).join('')}
+            </div>
+        </div>
+    `).join('');
+}
+
+function initFAQ() {
+    const container = document.getElementById('faq-container');
+    const faqs = [
+        { q: "Apa itu PPLG?", a: "PPLG adalah singkatan dari Pengembangan Perangkat Lunak dan Gim, jurusan keahlian di SMK yang mempelajari pemrograman software dan game." },
+        { q: "Berapa jumlah siswa?", a: "Terdapat 31 siswa aktif di kelas XII PPLG." },
+        { q: "Apa kegiatan unggulan kelas?", a: "Kegiatan unggulan meliputi coding bersama, hackathon, dan pengembangan project nyata." },
+        { q: "Bagaimana cara menghubungi kelas?", a: "Anda bisa menghubungi kami melalui formulir kontak di bawah atau email resmi sekolah." }
+    ];
+
+    container.innerHTML = faqs.map((f, i) => `
+        <div class="bg-white dark:bg-primary rounded-xl shadow-md overflow-hidden">
+            <button class="faq-btn w-full flex justify-between items-center p-5 text-left font-medium hover:text-accent transition" onclick="toggleFAQ(${i})">
+                <span>${f.q}</span>
+                <i class="fas fa-chevron-down transition-transform duration-300" id="faq-icon-${i}"></i>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-5" id="faq-content-${i}">
+                <p class="pb-5 text-soft dark:text-gray-300 text-sm">${f.a}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+// =============================================
+// 6. UI INTERACTIONS & LISTENERS
+// =============================================
+function initMembers() {
+    const filterSelect = document.getElementById('member-filter');
+    const searchInput = document.getElementById('member-search');
+
+    studentsAll.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s.number;
+        opt.innerText = s.number;
+        filterSelect.appendChild(opt);
+    });
+
+    searchInput.addEventListener('input', () => renderMembers(filterSelect.value, searchInput.value));
+    filterSelect.addEventListener('change', () => renderMembers(filterSelect.value, searchInput.value));
+
+    renderMembers();
+}
+
+function toggleMembers() {
+    const hiddenGrid = document.getElementById('membersHidden');
+    const toggleBtn = document.getElementById('membersToggle');
+    const isOpen = toggleBtn.getAttribute('data-open') === 'true';
+
+    if (isOpen) {
+        hiddenGrid.classList.add('hidden');
+        toggleBtn.innerText = translations[currentLang].btn_show_all;
+        toggleBtn.setAttribute('data-open', 'false');
+    } else {
+        hiddenGrid.classList.remove('hidden');
+        toggleBtn.innerText = translations[currentLang].btn_show_less;
+        toggleBtn.setAttribute('data-open', 'true');
+    }
+}
+
+function openMemberModal(name, img, number) {
+    const data = {
+        title: name,
+        img: img,
+        category: currentLang === 'id' ? 'Siswa' : 'Student',
+        desc: currentLang === 'id' ? `Nomor Absen: ${number}` : `Student Number: ${number}`,
+        likes: 0
+    };
+
+    filteredPins = [data];
+    currentModalIndex = 0;
+    openImageModal(0);
+}
+
+function initListeners() {
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        const btt = document.getElementById('back-to-top');
+
+        if (window.scrollY > 50) nav.classList.add('nav-scrolled');
+        else nav.classList.remove('nav-scrolled');
+
+        if (window.scrollY > 500) {
+            btt.classList.remove('hidden');
+            btt.classList.add('flex');
+        } else {
+            btt.classList.add('hidden');
+            btt.classList.remove('flex');
+        }
+
+        const sections = document.querySelectorAll('section[id]');
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('text-accent');
+            if (link.getAttribute('href') === `#${current}`) link.classList.add('text-accent');
+        });
+    });
+
+    document.getElementById('dark-toggle').addEventListener('click', () => {
+        isDark = !isDark;
+        document.documentElement.classList.toggle('dark', isDark);
+        localStorage.setItem('dark', isDark);
+    });
+
+    document.getElementById('lang-toggle').addEventListener('click', () => {
+        setLanguage(currentLang === 'id' ? 'en' : 'id');
+    });
+
+    document.getElementById('hamburger').addEventListener('click', () => {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
+    });
+
+    document.getElementById('back-to-top').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    document.querySelectorAll('.gal-filter').forEach(btn => {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.gal-filter').forEach(b => b.classList.replace('bg-accent', 'bg-soft'));
+            this.classList.replace('bg-soft', 'bg-accent');
+            renderGallery(this.getAttribute('data-filter'));
+        });
+    });
+
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        document.getElementById('alert-title').innerText = translations[currentLang].alert_success;
+        document.getElementById('alert-msg').innerText = translations[currentLang].alert_msg;
+        document.getElementById('alert-modal').classList.remove('hidden');
+        e.target.reset();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            document.getElementById('image-modal').classList.add('hidden');
+            document.getElementById('alert-modal').classList.add('hidden');
+        }
+
+        if (!document.getElementById('image-modal').classList.contains('hidden')) {
+            if (e.key === 'ArrowLeft') navigateModal(-1);
+            if (e.key === 'ArrowRight') navigateModal(1);
+        }
+    });
+
+    document.getElementById('modal-close').addEventListener('click', () => document.getElementById('image-modal').classList.add('hidden'));
+    document.getElementById('modal-prev').addEventListener('click', () => navigateModal(-1));
+    document.getElementById('modal-next').addEventListener('click', () => navigateModal(1));
+}
+
+function toggleFAQ(idx) {
+    const content = document.getElementById(`faq-content-${idx}`);
+    const icon = document.getElementById(`faq-icon-${idx}`);
+    const isOpen = content.style.maxHeight;
+
+    document.querySelectorAll('.faq-content').forEach(el => el.style.maxHeight = null);
+    document.querySelectorAll('.faq-btn i').forEach(el => el.classList.remove('rotate-180'));
+
+    if (!isOpen) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.classList.add('rotate-180');
+    }
+}
+
+function openImageModal(index) {
+    currentModalIndex = index;
+    const data = filteredPins[index];
+
+    document.getElementById('modal-img').src = data.img;
+    document.getElementById('modal-title').innerText = data.title;
+    document.getElementById('modal-cat').innerText = data.category;
+    document.getElementById('modal-desc').innerText = data.desc || 'Deskripsi kegiatan kelas XII PPLG';
+    document.getElementById('modal-likes').innerText = data.likes;
+
+    document.getElementById('image-modal').classList.remove('hidden');
+    document.getElementById('image-modal').classList.add('flex');
+}
+
+function navigateModal(dir) {
+    let newIdx = currentModalIndex + dir;
+    if (newIdx < 0) newIdx = filteredPins.length - 1;
+    if (newIdx >= filteredPins.length) newIdx = 0;
+    openImageModal(newIdx);
+}
+
+// Expose functions used by inline onclick
+window.toggleMembers = toggleMembers;
+window.openMemberModal = openMemberModal;
+window.openImageModal = openImageModal;
+window.toggleFAQ = toggleFAQ;
+window.renderGallery = renderGallery;
+window.setLanguage = setLanguage;
+window.navigateModal = navigateModal;
+window.renderStructure = renderStructure;
+window.initMembers = initMembers;
+window.renderProjects = renderProjects;
+
