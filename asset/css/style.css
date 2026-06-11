@@ -326,3 +326,81 @@ h1, h2, h3, h4, h5, h6 {
     from { opacity: 0; transform: translateX(20px); }
     to { opacity: 1; transform: translateX(0); }
 }
+
+/* Animasi Marquee Satu Baris */
+.marquee-track {
+    width: max-content;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.marquee-content {
+    animation: marquee-left 35s linear infinite; /* Ubah 35s untuk mengatur kecepatan */
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Efek Berhenti saat Hover */
+.marquee-track:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+@keyframes marquee-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Animasi Modal Gambar */
+#image-modal.active #modal-img {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Efek View Transition API (Dark Mode Morping) */
+::view-transition-old(root) {
+    animation: 300ms ease-out both fade-out;
+}
+::view-transition-new(root) {
+    animation: 300ms ease-in both fade-in;
+}
+
+@keyframes fade-out {
+    to { opacity: 0; }
+}
+@keyframes fade-in {
+    from { opacity: 0; }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-marquee {
+    animation: marquee 25s linear infinite;
+    display: flex;
+    width: fit-content;
+}
+
+/* Pause animation on hover */
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
+
+/* Membuat animasi max-height FAQ lebih smooth */
+.faq-content {
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    opacity: 0;
+}
+
+.faq-content.open {
+    opacity: 1;
+}
