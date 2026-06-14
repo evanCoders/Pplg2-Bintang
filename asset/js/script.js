@@ -65,6 +65,7 @@ const translations = {
     id: {
         nav_home: "Beranda",
         nav_about: "Tentang",
+        nav_structure: "Struktur",
         nav_portfolio: "Galeri",
         nav_contact: "Kontak",
         hero_major: "Pengembangan Perangkat Lunak dan Gim",
@@ -100,6 +101,7 @@ const translations = {
     en: {
         nav_home: "Home",
         nav_about: "About",
+        nav_structure: "Structure",
         nav_portfolio: "Gallery",
         nav_contact: "Contact",
         hero_major: "Software and Game Development",
