@@ -1,220 +1,322 @@
 /* ============================================
-   CUSTOM STYLES - EXTERNAL
+   CUSTOM STYLES - EXTERNAL (RESPONSIVE)
    ============================================ */
 
-/* Base */
+/* ===== BASE ===== */
 body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #F6FAFD; }
-::-webkit-scrollbar-thumb { background: #4A7FA7; border-radius: 4px; }
-.dark ::-webkit-scrollbar-track { background: #0A1931; }
-.dark ::-webkit-scrollbar-thumb { background: #B3CFE5; }
-
-/* Loader */
-#loader {
-    position: fixed; inset: 0; z-index: 9999; background: #F6FAFD;
-    display: flex; align-items: center; justify-content: center; transition: opacity 0.5s;
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 8px;
 }
-.dark #loader { background: #0A1931; }
+
+::-webkit-scrollbar-track {
+    background: #F6FAFD;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4A7FA7;
+    border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #0A1931;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #B3CFE5;
+}
+
+/* ===== LOADER ===== */
+#loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #F6FAFD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s;
+}
+
+.dark #loader {
+    background: #0A1931;
+}
+
 .spinner {
-    width: 40px; height: 40px; border: 4px solid #B3CFE5;
-    border-top-color: #4A7FA7; border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #B3CFE5;
+    border-top-color: #4A7FA7;
+    border-radius: 50%;
     animation: spin 1s linear infinite;
 }
-@keyframes spin { to { transform: rotate(360deg); } }
 
-/* Glassmorphism Navbar */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ===== NAVBAR ===== */
 .nav-glass {
     background: rgba(246, 250, 253, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
+
 .nav-scrolled {
     background: rgba(246, 250, 253, 0.9);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
+
 .dark .nav-scrolled {
     background: rgba(10, 25, 49, 0.9);
 }
 
-/* Animated Gradient Blob */
+/* ===== ANIMATED BLOB ===== */
 .blob {
-    position: absolute; border-radius: 50%; filter: blur(80px);
-    opacity: 0.4; z-index: -1; animation: float 8s infinite ease-in-out;
-}
-@keyframes float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    z-index: -1;
+    animation: float 8s infinite ease-in-out;
 }
 
-/* Masonry Layout */
-.masonry { column-count: 5; column-gap: 16px; }
-@media (max-width: 1280px) { .masonry { column-count: 4; } }
-@media (max-width: 1024px) { .masonry { column-count: 3; } }
-@media (max-width: 640px) { .masonry { column-count: 2; } }
-@media (max-width: 400px) { .masonry { column-count: 1; } }
+@media (max-width: 768px) {
+    .blob {
+        filter: blur(50px);
+        opacity: 0.3;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+}
+
+/* ===== MASONRY GALLERY - PINTEREST STYLE (FULLY RESPONSIVE) ===== */
+/* Mempertahankan gaya Pinterest/masonry di semua ukuran layar */
+.masonry {
+    column-count: 5;
+    column-gap: 16px;
+}
+
+/* Tablet landscape */
+@media (max-width: 1280px) {
+    .masonry {
+        column-count: 4;
+    }
+}
+
+/* Tablet portrait */
+@media (max-width: 1024px) {
+    .masonry {
+        column-count: 3;
+    }
+}
+
+/* Mobile landscape & tablet kecil */
+@media (max-width: 768px) {
+    .masonry {
+        column-count: 2;
+        column-gap: 12px;
+    }
+}
+
+/* Mobile portrait - TETAP 2 KOLOM seperti Pinterest */
+@media (max-width: 640px) {
+    .masonry {
+        column-count: 2;
+        column-gap: 10px;
+    }
+}
+
+/* Mobile sangat kecil - TETAP 2 KOLOM, jangan 1 kolom */
+@media (max-width: 480px) {
+    .masonry {
+        column-count: 2;
+        column-gap: 8px;
+    }
+}
+
+/* Hanya untuk HP dengan layar sangat sempit (<360px) baru 1 kolom */
+@media (max-width: 360px) {
+    .masonry {
+        column-count: 1;
+        column-gap: 0;
+    }
+}
 
 .masonry-item {
-    break-inside: avoid; margin-bottom: 16px; position: relative;
-    overflow: hidden; border-radius: 12px; cursor: pointer;
+    break-inside: avoid;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
     transition: transform 0.3s;
 }
-.masonry-item:hover { transform: scale(1.02); }
-.masonry-item img { width: 100%; display: block; transition: transform 0.5s; }
-.masonry-item:hover img { transform: scale(1.1); }
+
+@media (max-width: 640px) {
+    .masonry-item {
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+}
+
+.masonry-item:hover {
+    transform: scale(1.02);
+}
+
+.masonry-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.masonry-item:hover img {
+    transform: scale(1.1);
+}
+
 .masonry-overlay {
-    position: absolute; inset: 0; background: rgba(10, 25, 49, 0.5);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; transition: opacity 0.3s;
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 25, 49, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
-.masonry-item:hover .masonry-overlay { opacity: 1; }
 
-/* Fade animations */
-.fade-in { animation: fadeIn 0.5s ease-in-out; }
+.masonry-item:hover .masonry-overlay {
+    opacity: 1;
+}
+
+/* ===== FADE ANIMATIONS ===== */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Typing cursor */
+/* ===== TYPING CURSOR ===== */
 .typing-cursor {
     border-right: 2px solid #4A7FA7;
     animation: blink 1s step-end infinite;
 }
-@keyframes blink { 50% { border-color: transparent; } }
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
 
 /* ============================================
-   PREMIUM AESTHETIC STYLES
+   GALLERY FILTER BUTTONS
    ============================================ */
-
-:root {
-    --dark-900: #050505;
-    --dark-800: #0a0a0a;
-    --dark-700: #111111;
-    --neon-blue: #39a0ff;
-    --neon-purple: #8b5cf6;
-    --neon-pink: #f43f5e;
+.gal-filter {
+    transition: all 0.3s ease;
 }
 
-/* Base Premium Override */
-body {
-    background-color: var(--dark-900);
-    font-family: "Inter", sans-serif;
-    overflow-x: hidden;
-}
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Playfair Display", serif;
-}
-::selection {
-    background: rgba(139, 92, 246, 0.3);
-    color: #fff;
+.gal-filter.active {
+    background-color: #4A7FA7 !important;
+    color: white !important;
 }
 
-/* Background Effects */
-.premium-bg {
-    position: fixed; inset: 0; z-index: -20;
-    background:
-        radial-gradient(800px 400px at 20% 30%, rgba(57, 160, 255, 0.06), transparent 70%),
-        radial-gradient(600px 600px at 80% 70%, rgba(139, 92, 246, 0.06), transparent 70%),
-        radial-gradient(500px 400px at 50% 50%, rgba(244, 63, 94, 0.04), transparent 70%);
-    pointer-events: none;
-}
-.premium-grid {
-    position: fixed; inset: 0; z-index: -30;
-    background-size: 60px 60px;
-    background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-    pointer-events: none;
-}
-.premium-glowline {
-    position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--neon-blue), var(--neon-purple), var(--neon-pink), transparent);
-    z-index: 100; opacity: 0.6;
+@media (max-width: 640px) {
+    .gal-filter {
+        padding: 6px 12px !important;
+        font-size: 0.7rem !important;
+    }
 }
 
-/* Glassmorphism Utilities */
-.glass-soft {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+/* ============================================
+   SCROLL REVEAL
+   ============================================ */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Section Components */
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   COUNTER & SECTION COMPONENTS
+   ============================================ */
+.counter {
+    display: inline-block;
+}
+
 .divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
 }
+
 .section-label {
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
-    text-transform: uppercase; display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: inline-block;
 }
+
 .tag {
-    font-size: 0.7rem; font-weight: 600; padding: 6px 16px;
-    border-radius: 999px; background: rgba(255, 255, 255, 0.05);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7); transition: all 0.3s;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s;
 }
+
 .tag:hover {
     background: rgba(139, 92, 246, 0.15);
     border-color: rgba(139, 92, 246, 0.3);
     color: #fff;
 }
 
-/* Gallery Filter Buttons */
-.gal-filter {
-    transition: all 0.3s ease;
-}
-.gal-filter.active {
-    background-color: #4A7FA7 !important;
-    color: white !important;
-}
-
-/* Scroll Reveal */
-.reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Counter */
-.counter {
-    display: inline-block;
-}
-
-/* Lang Button */
-.lang-btn {
-    padding: 4px 10px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    border-radius: 6px;
-    background: transparent;
-    color: rgba(255, 255, 255, 0.3);
-    transition: all 0.2s;
-}
-.lang-btn.active {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-}
-.lang-btn:hover {
-    color: #fff;
+@media (max-width: 640px) {
+    .tag {
+        padding: 4px 12px;
+        font-size: 0.6rem;
+    }
 }
 
 /* ============================================
-   STRUKTUR ORGANISASI CSS
+   STRUKTUR ORGANISASI (RESPONSIVE)
    ============================================ */
-
 :root {
     --line-color: #cbd5e1;
     --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -231,31 +333,57 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     border-bottom: 4px solid transparent;
 }
-.dark .org-card { background: #1e293b; }
-.org-card:hover { transform: translateY(-8px); }
+
+.dark .org-card {
+    background: #1e293b;
+}
+
+.org-card:hover {
+    transform: translateY(-8px);
+}
+
 .org-card img {
-    width: 70px; height: 70px; border-radius: 50%;
-    object-fit: cover; margin: 0 auto 12px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 12px;
     border: 3px solid #f1f5f9;
 }
+
 .org-card h3 {
-    font-size: 0.85rem; font-weight: 700;
-    color: #1e293b; line-height: 1.2; margin-bottom: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.2;
+    margin-bottom: 4px;
 }
-.dark .org-card h3 { color: #ffffff; }
+
+.dark .org-card h3 {
+    color: #ffffff;
+}
+
 .org-card p {
-    font-size: 0.75rem; color: #64748b;
-    font-weight: 500; text-transform: uppercase;
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 500;
+    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-.dark .org-card p { color: #94a3b8; }
+
+.dark .org-card p {
+    color: #94a3b8;
+}
 
 .connector-v {
     width: 2px;
     height: 40px;
     background-color: var(--line-color);
 }
-.dark .connector-v { background-color: #b3cfe5; }
+
+.dark .connector-v {
+    background-color: #b3cfe5;
+}
 
 .org-level {
     position: relative;
@@ -264,13 +392,17 @@ h1, h2, h3, h4, h5, h6 {
     flex-wrap: wrap;
     gap: 24px;
 }
+
 .connector-h {
     position: absolute;
     top: 0;
     height: 2px;
     background-color: var(--line-color);
 }
-.dark .connector-h { background-color: #b3cfe5; }
+
+.dark .connector-h {
+    background-color: #b3cfe5;
+}
 
 .org-level:not(.level-top) .org-card::before {
     content: '';
@@ -282,52 +414,71 @@ h1, h2, h3, h4, h5, h6 {
     height: 40px;
     background-color: var(--line-color);
 }
+
 .dark .org-level:not(.level-top) .org-card::before {
     background-color: #b3cfe5;
 }
 
-.border-rose { border-bottom-color: #f43f5e; }
-.border-sky { border-bottom-color: #0ea5e9; }
-.border-teal { border-bottom-color: #14b8a6; }
-.border-orange { border-bottom-color: #f97316; }
-.border-violet { border-bottom-color: #8b5cf6; }
-.border-emerald { border-bottom-color: #10b981; }
+.border-rose {
+    border-bottom-color: #f43f5e;
+}
+
+.border-sky {
+    border-bottom-color: #0ea5e9;
+}
+
+.border-teal {
+    border-bottom-color: #14b8a6;
+}
+
+.border-orange {
+    border-bottom-color: #f97316;
+}
+
+.border-violet {
+    border-bottom-color: #8b5cf6;
+}
+
+.border-emerald {
+    border-bottom-color: #10b981;
+}
 
 @media (max-width: 768px) {
-    .connector-h { display: none; }
-    .org-level:not(.level-top) .org-card::before { display: none; }
-    .org-level { gap: 16px; }
-    .org-card { width: 120px; padding: 16px 12px; }
-    .org-card img { width: 60px; height: 60px; }
+    .connector-h {
+        display: none;
+    }
+
+    .org-level:not(.level-top) .org-card::before {
+        display: none;
+    }
+
+    .org-level {
+        gap: 16px;
+    }
+
+    .org-card {
+        width: 110px;
+        padding: 12px 8px;
+    }
+
+    .org-card img {
+        width: 55px;
+        height: 55px;
+        margin-bottom: 8px;
+    }
+
+    .org-card h3 {
+        font-size: 0.7rem;
+    }
+
+    .org-card p {
+        font-size: 0.6rem;
+    }
 }
 
-/* Toast */
-.toast {
-    background: rgba(20, 20, 20, 0.9);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    padding: 14px 24px;
-    border-radius: 12px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    pointer-events: auto;
-    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.5);
-}
-.animate-slideIn {
-    animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.toast.exit {
-    opacity: 0;
-    transform: translateX(20px);
-    transition: all 0.3s;
-}
-@keyframes slideIn {
-    from { opacity: 0; transform: translateX(20px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-/* Animasi Marquee Satu Baris */
+/* ============================================
+   MARQUEE / TECH STACK
+   ============================================ */
 .marquee-track {
     width: max-content;
     display: flex;
@@ -335,12 +486,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .marquee-content {
-    animation: marquee-left 35s linear infinite; /* Ubah 35s untuk mengatur kecepatan */
+    animation: marquee-left 35s linear infinite;
     display: flex;
     gap: 1.5rem;
 }
 
-/* Efek Berhenti saat Hover */
 .marquee-track:hover .marquee-content {
     animation-play-state: paused;
 }
@@ -349,36 +499,7 @@ h1, h2, h3, h4, h5, h6 {
     0% {
         transform: translateX(0);
     }
-    100% {
-        transform: translateX(-50%);
-    }
-}
 
-/* Animasi Modal Gambar */
-#image-modal.active #modal-img {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* Efek View Transition API (Dark Mode Morping) */
-::view-transition-old(root) {
-    animation: 300ms ease-out both fade-out;
-}
-::view-transition-new(root) {
-    animation: 300ms ease-in both fade-in;
-}
-
-@keyframes fade-out {
-    to { opacity: 0; }
-}
-@keyframes fade-in {
-    from { opacity: 0; }
-}
-
-@keyframes marquee {
-    0% {
-        transform: translateX(0);
-    }
     100% {
         transform: translateX(-50%);
     }
@@ -390,12 +511,54 @@ h1, h2, h3, h4, h5, h6 {
     width: fit-content;
 }
 
-/* Pause animation on hover */
 .animate-marquee:hover {
     animation-play-state: paused;
 }
 
-/* Membuat animasi max-height FAQ lebih smooth */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ============================================
+   IMAGE MODAL
+   ============================================ */
+#image-modal.active #modal-img {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ============================================
+   VIEW TRANSITION API (DARK MODE MORPHING)
+   ============================================ */
+::view-transition-old(root) {
+    animation: 300ms ease-out both fade-out;
+}
+
+::view-transition-new(root) {
+    animation: 300ms ease-in both fade-in;
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   FAQ SECTION
+   ============================================ */
 .faq-content {
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
     opacity: 0;
@@ -403,4 +566,67 @@ h1, h2, h3, h4, h5, h6 {
 
 .faq-content.open {
     opacity: 1;
+}
+
+/* ============================================
+   RESPONSIVE FIXES - LAYOUT & SPACING
+   ============================================ */
+@media (max-width: 768px) {
+
+    .container,
+    .max-w-8xl,
+    .px-4,
+    .px-6,
+    .px-8 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .gap-4,
+    .gap-6,
+    .gap-8 {
+        gap: 1rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .min-h-screen {
+        min-height: auto !important;
+        padding-top: 5rem !important;
+        padding-bottom: 3rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .stat-card .text-3xl {
+        font-size: 1.5rem !important;
+    }
 }
