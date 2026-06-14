@@ -111,55 +111,31 @@ body {
 
 /* ===== MASONRY GALLERY - PINTEREST STYLE (FULLY RESPONSIVE) ===== */
 /* Mempertahankan gaya Pinterest/masonry di semua ukuran layar */
+/* Default untuk HP kecil */
 .masonry {
-    column-count: 5;
-    column-gap: 16px;
+    column-count: 1;
+    column-gap: 12px;
 }
 
-/* Tablet landscape */
-@media (max-width: 1280px) {
-    .masonry {
-        column-count: 4;
-    }
+/* OPPO A17 (lebar CSS ~480px) dan semua HP di atasnya → 2 kolom */
+@media (min-width: 380px) {
+    .masonry { column-count: 2; }
 }
 
-/* Tablet portrait */
-@media (max-width: 1024px) {
-    .masonry {
-        column-count: 3;
-    }
+@media (min-width: 640px) {
+    .masonry { column-count: 2; column-gap: 16px; }
 }
 
-/* Mobile landscape & tablet kecil */
-@media (max-width: 768px) {
-    .masonry {
-        column-count: 2;
-        column-gap: 12px;
-    }
+@media (min-width: 768px) {
+    .masonry { column-count: 3; }
 }
 
-/* Mobile portrait - TETAP 2 KOLOM seperti Pinterest */
-@media (max-width: 640px) {
-    .masonry {
-        column-count: 2;
-        column-gap: 10px;
-    }
+@media (min-width: 1024px) {
+    .masonry { column-count: 4; }
 }
 
-/* Mobile sangat kecil - TETAP 2 KOLOM, jangan 1 kolom */
-@media (max-width: 480px) {
-    .masonry {
-        column-count: 2;
-        column-gap: 8px;
-    }
-}
-
-/* Hanya untuk HP dengan layar sangat sempit (<360px) baru 1 kolom */
-@media (max-width: 360px) {
-    .masonry {
-        column-count: 2;
-        column-gap: 0;
-    }
+@media (min-width: 1280px) {
+    .masonry { column-count: 5; }
 }
 
 .masonry-item {
