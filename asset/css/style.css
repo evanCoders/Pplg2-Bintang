@@ -157,7 +157,7 @@ body {
 /* Hanya untuk HP dengan layar sangat sempit (<360px) baru 1 kolom */
 @media (max-width: 360px) {
     .masonry {
-        column-count: 1;
+        column-count: 2;
         column-gap: 0;
     }
 }
