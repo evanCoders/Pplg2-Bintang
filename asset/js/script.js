@@ -1,5 +1,7 @@
-// Moved from inline script in index.html
-
+// GABUNGAN ANTI KLIK KANAN, ANTI COPY, ANTI SELECT, ANTI SAVE FOTO
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('copy', e => e.preventDefault());
+document.querySelectorAll('img').forEach(img => { img.addEventListener('dragstart', e => e.preventDefault()); img.style.pointerEvents = 'none'; document.body.style.userSelect = 'none'; });
 // =============================================
 // 1. DATA COLLECTION - GALLERY ONLY
 // =============================================
