@@ -117,7 +117,6 @@ body {
     column-gap: 12px;
 }
 
-/* OPPO A17 (lebar CSS ~480px) dan semua HP di atasnya → 2 kolom */
 @media (min-width: 380px) {
     .masonry { column-count: 2; }
 }
