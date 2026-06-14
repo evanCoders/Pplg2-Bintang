@@ -1,5 +1,5 @@
 /* ============================================
-   PREMIUM AESTHETIC - DARK MODE STYLES
+   PREMIUM AESTHETIC - DARK MODE STYLES (RESPONSIVE)
    ============================================ */
 
 :root {
@@ -11,14 +11,19 @@
     --neon-pink: #f43f5e;
 }
 
-/* Base & Typography - Premium Override */
+/* ===== BASE & TYPOGRAPHY ===== */
 body {
     background-color: var(--dark-900);
     font-family: "Inter", sans-serif;
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Playfair Display", serif;
 }
 
@@ -27,7 +32,26 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
 }
 
-/* Background Effects */
+/* Responsive typography */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem !important;
+    }
+
+    h2 {
+        font-size: 1.75rem !important;
+    }
+
+    h3 {
+        font-size: 1.5rem !important;
+    }
+
+    body {
+        font-size: 0.95rem;
+    }
+}
+
+/* ===== BACKGROUND EFFECTS ===== */
 .premium-bg {
     position: fixed;
     inset: 0;
@@ -37,6 +61,15 @@ h1, h2, h3, h4, h5, h6 {
         radial-gradient(600px 600px at 80% 70%, rgba(139, 92, 246, 0.06), transparent 70%),
         radial-gradient(500px 400px at 50% 50%, rgba(244, 63, 94, 0.04), transparent 70%);
     pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .premium-bg {
+        background:
+            radial-gradient(400px 300px at 20% 30%, rgba(57, 160, 255, 0.06), transparent 70%),
+            radial-gradient(300px 300px at 80% 70%, rgba(139, 92, 246, 0.06), transparent 70%),
+            radial-gradient(250px 250px at 50% 50%, rgba(244, 63, 94, 0.04), transparent 70%);
+    }
 }
 
 .premium-grid {
@@ -52,6 +85,12 @@ h1, h2, h3, h4, h5, h6 {
     pointer-events: none;
 }
 
+@media (max-width: 768px) {
+    .premium-grid {
+        background-size: 40px 40px;
+    }
+}
+
 .premium-glowline {
     position: absolute;
     top: 0;
@@ -63,7 +102,7 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.6;
 }
 
-/* Glassmorphism Utilities */
+/* ===== GLASSMORPHISM UTILITIES ===== */
 .glass-soft {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(20px);
@@ -74,13 +113,14 @@ h1, h2, h3, h4, h5, h6 {
 .glow-hover {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .glow-hover:hover {
     border-color: rgba(139, 92, 246, 0.4);
     box-shadow: 0 0 30px rgba(139, 92, 246, 0.1), inset 0 0 20px rgba(139, 92, 246, 0.05);
     transform: translateY(-4px);
 }
 
-/* Buttons Premium */
+/* ===== BUTTONS PREMIUM ===== */
 .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -96,6 +136,7 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     overflow: hidden;
 }
+
 .btn-primary::before {
     content: "";
     position: absolute;
@@ -104,17 +145,29 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0;
     transition: opacity 0.3s;
 }
+
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 15px 40px -10px rgba(139, 92, 246, 0.7);
 }
+
 .btn-primary:hover::before {
     opacity: 1;
 }
+
 .btn-primary span,
 .btn-primary svg {
     position: relative;
     z-index: 1;
+}
+
+@media (max-width: 640px) {
+
+    .btn-primary,
+    .btn-outline {
+        padding: 10px 20px;
+        font-size: 0.75rem;
+    }
 }
 
 .btn-outline {
@@ -130,12 +183,13 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s;
 }
+
 .btn-outline:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Inputs Premium */
+/* ===== INPUTS PREMIUM ===== */
 .input-field {
     width: 100%;
     padding: 14px 18px;
@@ -146,17 +200,26 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.9rem;
     transition: all 0.3s;
 }
+
 .input-field:focus {
     outline: none;
     border-color: rgba(139, 92, 246, 0.5);
     box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
     background: rgba(255, 255, 255, 0.05);
 }
+
 .input-field::placeholder {
     color: rgba(255, 255, 255, 0.3);
 }
 
-/* Lang Button Premium */
+@media (max-width: 640px) {
+    .input-field {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== LANGUAGE BUTTON ===== */
 .lang-btn {
     padding: 4px 10px;
     font-size: 0.7rem;
@@ -166,21 +229,24 @@ h1, h2, h3, h4, h5, h6 {
     color: rgba(255, 255, 255, 0.3);
     transition: all 0.2s;
 }
+
 .lang-btn.active {
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
 }
+
 .lang-btn:hover {
     color: #fff;
 }
 
-/* Stats & Dashboard Premium */
+/* ===== STAT CARDS ===== */
 .stat-card {
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
     overflow: hidden;
 }
+
 .stat-card::before {
     content: "";
     position: absolute;
@@ -191,7 +257,7 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
 }
 
-/* Toast Premium */
+/* ===== TOAST NOTIFICATION ===== */
 .toast {
     background: rgba(20, 20, 20, 0.9);
     backdrop-filter: blur(20px);
@@ -204,15 +270,33 @@ h1, h2, h3, h4, h5, h6 {
     pointer-events: auto;
     box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.5);
 }
+
+@media (max-width: 640px) {
+    .toast {
+        padding: 10px 16px;
+        font-size: 0.75rem;
+        border-radius: 8px;
+    }
+}
+
 .animate-slideIn {
     animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .toast.exit {
     opacity: 0;
     transform: translateX(20px);
     transition: all 0.3s;
 }
+
 @keyframes slideIn {
-    from { opacity: 0; transform: translateX(20px); }
-    to { opacity: 1; transform: translateX(0); }
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
